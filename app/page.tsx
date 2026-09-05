@@ -53,7 +53,10 @@ export default function Home() {
         </section>
 
         <section className="connect-block">
-          <h2 className="heading">collection of my stuff:</h2>
+          <h2 className="collection-heading">
+            <span className="sr-only">collection of my stuff:</span>
+            <img src="/collection-heading.png" alt="" className="collection-heading-art" />
+          </h2>
           <nav className="social-links" aria-label="Portfolio links">
             {portfolioLinks.map((link) => (
               <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
