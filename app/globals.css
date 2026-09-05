@@ -3,7 +3,7 @@
 :root { --background: #fff; --foreground: #000; }
 * { box-sizing: border-box; }
 html, body { width: 100%; min-height: 100%; margin: 0; padding: 0; overflow-x: hidden; }
-body { min-height: 100vh; min-height: 100dvh; background: var(--background); color: var(--foreground); font-family: var(--font-poppins), Poppins, sans-serif; }
+body { min-height: 100vh; min-height: 100dvh; background-color: #f8f6f1; background-image: url('/lined-paper.png'); background-position: center top; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; color: var(--foreground); font-family: var(--font-poppins), Poppins, sans-serif; }
 .page-wrapper { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; min-height: 100vh; min-height: 100dvh; padding: 132px 20px 40px; }
 .utility-page-content { display: flex; width: min(80%, 1000px); margin: 0 auto; flex-direction: column; justify-content: flex-start; align-items: center; color: #000; text-align: center; }
 .intro-block { width: min(600px, 100%); margin: 0 auto 60px; text-align: center; }
@@ -27,6 +27,7 @@ a { color: inherit; font-size: 16px; text-decoration: none; transition: color 0.
 a:hover { color: #999; }
 .social-links a { position: relative; padding-bottom: 9px; }
 .social-links a::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 8px; background: url('/crayon-underline.png') center 48% / 100% auto no-repeat; pointer-events: none; }
+.social-links a:first-child::after { height: 10px; background-size: 180% auto; filter: hue-rotate(52deg) saturate(1.55) brightness(1.15); }
 .social-links a:nth-child(2)::after { filter: hue-rotate(35deg) saturate(1.15); }
 .social-links a:nth-child(3)::after { filter: hue-rotate(100deg) saturate(1.2); }
 .social-links a:nth-child(4)::after { filter: hue-rotate(190deg) saturate(1.2); }
