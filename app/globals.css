@@ -26,8 +26,8 @@ body { min-height: 100vh; min-height: 100dvh; background-color: #f8f6f1; backgro
 a { color: inherit; font-size: 21px; line-height: 51px; text-decoration: none; transition: color 0.15s ease; }
 a:hover { color: #999; }
 .social-links a { position: relative; padding-bottom: 9px; }
-.social-links a::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 8px; background: url('/crayon-underline.png') center 48% / 100% auto no-repeat; pointer-events: none; }
-.social-links a:first-child::after { height: 10px; background-size: 180% auto; filter: hue-rotate(52deg) saturate(1.55) brightness(1.15); }
+.social-links a::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 8px; background: url('/crayon-underline.png') center 48% / 100% auto no-repeat; mix-blend-mode: multiply; pointer-events: none; }
+.social-links a:first-child::after { height: 10px; background-size: 180% auto; filter: hue-rotate(60deg) saturate(2) brightness(1.15); }
 .social-links a:nth-child(2)::after { filter: hue-rotate(35deg) saturate(1.15); }
 .social-links a:nth-child(3)::after { filter: hue-rotate(100deg) saturate(1.2); }
 .social-links a:nth-child(4)::after { filter: hue-rotate(190deg) saturate(1.2); }
