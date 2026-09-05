@@ -9,6 +9,8 @@ body { min-height: 100vh; min-height: 100dvh; background: var(--background); col
 .intro-block { margin-bottom: 60px; }
 .worksheet-header { position: absolute; top: 30px; left: 0; display: flex; width: 100%; align-items: flex-start; justify-content: space-between; gap: 40px; padding: 0 42px; }
 .worksheet-field { display: flex; align-items: flex-end; gap: 10px; min-width: 0; }
+.name-field { flex: 1 1 auto; }
+.date-field { flex: 0 0 auto; }
 .field-label { font-size: 24px; line-height: 36px; font-weight: 700; }
 .field-line { display: flex; height: 36px; align-items: flex-end; border-bottom: 2px solid #000; }
 .name-line { width: min(250px, 29vw); overflow: hidden; }
@@ -23,14 +25,21 @@ a:hover { color: #999; }
 .copy-message { position: fixed; left: 50%; top: calc(50% - 160px); z-index: 10; transform: translate(-50%, calc(-100% - 8px)); border-radius: 6px; background: rgb(0 0 0 / 75%); color: #fff; padding: 6px 12px; font-size: 18px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; }
 .copy-message.visible { transform: translate(-50%, -100%); opacity: 1; }
 @media screen and (max-width: 991px) { .utility-page-content { width: 100%; } }
+@media screen and (max-width: 760px) {
+  .page-wrapper { padding-top: 188px; }
+  .worksheet-header { flex-direction: column; gap: 12px; padding: 0 24px; }
+  .name-field { width: 100%; }
+  .name-line { flex: 1 1 auto; width: auto; max-width: 250px; }
+  .date-field { align-self: flex-end; }
+}
 @media screen and (max-width: 479px) {
   html, body { min-height: 100dvh; overflow-y: auto; }
-  .page-wrapper { align-items: flex-start; padding: 154px 20px 32px; }
-  .worksheet-header { top: 20px; gap: 12px; padding: 0 18px; }
+  .page-wrapper { align-items: flex-start; padding: 166px 20px 32px; }
+  .worksheet-header { top: 20px; gap: 10px; padding: 0 18px; }
   .worksheet-field { gap: 6px; }
   .field-label { font-size: 16px; line-height: 26px; }
   .field-line { height: 26px; border-bottom-width: 1.5px; }
-  .name-line { width: min(150px, 39vw); }
+  .name-line { width: auto; max-width: 170px; }
   .header-name-logo { height: 28px; }
   .date-line { min-width: 0; width: min(118px, 31vw); padding: 0 2px 2px; font-size: 11px; line-height: 14px; }
   .heading { font-size: 20px; line-height: 30px; }
