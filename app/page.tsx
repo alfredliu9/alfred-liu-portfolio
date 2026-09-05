@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 
 const portfolioLinks = [
   { label: 'resume', href: 'https://drive.google.com/file/d/1Z74Mp15aJSjenHIHeGr_igfWwCMbVb8U/view?usp=sharing' },
-  { label: 'sports photography', href: 'https://cjga.smugmug.com/' },
-  { label: 'sports recruitment web app', href: 'https://collegelane.ca/' },
-  { label: 'sports access non-profit website', href: 'https://passnplayproject.ca/' },
+  { label: 'CJGA sports photography', href: 'https://cjga.smugmug.com/' },
+  { label: 'CollegeLane web app', href: 'https://collegelane.ca/' },
+  { label: 'PassNPlay Project website', href: 'https://passnplayproject.ca/' },
   { label: 'CJGA graphic design and reels', href: 'https://www.instagram.com/cjgagolf/?hl=en' },
-  { label: 'golf sunscreen start-up marketing', href: 'https://drive.google.com/file/d/1po2foA1nS9AKY4qnxezroMeJ4d184Azc/view?usp=sharing' },
+  { label: 'Icarus Sun Protection marketing', href: 'https://drive.google.com/file/d/1po2foA1nS9AKY4qnxezroMeJ4d184Azc/view?usp=sharing' },
 ];
 
 export default function Home() {
