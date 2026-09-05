@@ -53,7 +53,7 @@ export default function Home() {
       <div className="utility-page-content">
         <section className="intro-block">
           <p>
-            i'm a recent high school graduate who is currently conducting immunology research at the university of toronto and teaching myself how to code. i'm also working on a new version of this website, which will be live soon.
+            hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. i am interested in the intersection between sports, economics, and business. this website is my personal portfolio that keeps track of all of my sports marketing work, including graphic design, videography, photography, and website creation. check it out below :)
           </p>
         </section>
 
