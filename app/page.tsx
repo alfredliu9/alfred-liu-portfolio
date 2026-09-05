@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const placeholderLinks = [
-  { label: 'linkedin', href: '#' },
-  { label: 'google scholar', href: '#' },
-  { label: 'instagram', href: '#' },
+const portfolioLinks = [
+  { label: 'sports photography', href: 'https://cjga.smugmug.com/' },
+  { label: 'sports recruitment web app', href: 'https://collegelane.ca/' },
+  { label: 'sports access non-profit website', href: 'https://passnplayproject.ca/' },
+  { label: 'CJGA graphic design and reels', href: 'https://www.instagram.com/cjgagolf/?hl=en' },
+  { label: 'golf sunscreen start up post log', href: 'https://drive.google.com/file/d/1po2foA1nS9AKY4qnxezroMeJ4d184Azc/view?usp=sharing' },
+  { label: 'resume', href: 'https://drive.google.com/file/d/1Z74Mp15aJSjenHIHeGr_igfWwCMbVb8U/view?usp=sharing' },
 ];
 
 export default function Home() {
-  const [messageVisible, setMessageVisible] = useState(false);
   const [today, setToday] = useState('');
-  const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const updateDate = () => {
@@ -26,12 +27,6 @@ export default function Home() {
     const interval = window.setInterval(updateDate, 60_000);
     return () => window.clearInterval(interval);
   }, []);
-
-  function showPlaceholderMessage() {
-    if (hideTimeout.current) clearTimeout(hideTimeout.current);
-    setMessageVisible(true);
-    hideTimeout.current = setTimeout(() => setMessageVisible(false), 2600);
-  }
 
   return (
     <main className="page-wrapper">
@@ -58,18 +53,13 @@ export default function Home() {
         </section>
 
         <section className="connect-block">
-          <h2 className="heading">would love to connect:</h2>
-          <nav className="social-links" aria-label="Social links">
-            <a href="#" onClick={(event) => { event.preventDefault(); showPlaceholderMessage(); }}>email</a>
-            {placeholderLinks.map((link) => (
-              <a key={link.label} href={link.href} onClick={(event) => event.preventDefault()}>{link.label}</a>
+          <h2 className="heading">collection of my stuff:</h2>
+          <nav className="social-links" aria-label="Portfolio links">
+            {portfolioLinks.map((link) => (
+              <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
             ))}
           </nav>
         </section>
-      </div>
-
-      <div className={`copy-message${messageVisible ? ' visible' : ''}`} role="status">
-        alfred's email link is coming soon!
       </div>
     </main>
   );

@@ -22,8 +22,6 @@ body { min-height: 100vh; min-height: 100dvh; background: var(--background); col
 .social-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; }
 a { color: inherit; font-size: 16px; text-decoration: underline; transition: color 0.15s ease; }
 a:hover { color: #999; }
-.copy-message { position: fixed; left: 50%; top: calc(50% - 160px); z-index: 10; transform: translate(-50%, calc(-100% - 8px)); border-radius: 6px; background: rgb(0 0 0 / 75%); color: #fff; padding: 6px 12px; font-size: 18px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; }
-.copy-message.visible { transform: translate(-50%, -100%); opacity: 1; }
 @media screen and (max-width: 991px) { .utility-page-content { width: 100%; } }
 @media screen and (max-width: 760px) {
   .page-wrapper { padding-top: 188px; }
@@ -48,5 +46,4 @@ a:hover { color: #999; }
   .connect-block .heading { margin-bottom: 14px; }
   .social-links { gap: 10px 24px; }
   a { font-size: 14px; }
-  .copy-message { font-size: 15px; }
 }
