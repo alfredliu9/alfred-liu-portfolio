@@ -19,8 +19,8 @@ body { min-height: 100vh; min-height: 100dvh; background: var(--background); col
 .heading { margin: 0 0 10px; font-size: 24px; line-height: 36px; font-weight: 700; }
 .intro-block p { max-width: 600px; margin: 0; font-size: 16px; line-height: 26px; }
 .connect-block { width: min(940px, 100%); margin: 0 auto; text-align: center; }
-.collection-heading { display: flex; width: 100%; height: 36px; margin: 0 0 20px; align-items: center; justify-content: center; overflow: visible; }
-.collection-heading-art { display: block; width: min(290px, 78vw); height: 36px; object-fit: fill; mix-blend-mode: multiply; }
+.collection-heading { display: flex; width: 100%; height: auto; margin: 0 0 16px; align-items: center; justify-content: center; }
+.collection-heading-art { display: block; width: min(240px, 72vw); height: auto; object-fit: contain; mix-blend-mode: multiply; }
 .social-links { display: flex; width: 100%; margin: 0 auto; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px 40px; text-align: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 a { color: inherit; font-size: 16px; text-decoration: underline; transition: color 0.15s ease; }
@@ -46,8 +46,8 @@ a:hover { color: #999; }
   .heading { font-size: 20px; line-height: 30px; }
   .intro-block { margin-bottom: 40px; }
   .intro-block p { font-size: 14px; line-height: 22px; }
-  .collection-heading { height: 30px; margin-bottom: 14px; }
-  .collection-heading-art { width: min(240px, 82vw); height: 30px; }
+  .collection-heading { height: auto; margin-bottom: 12px; }
+  .collection-heading-art { width: min(205px, 72vw); height: auto; }
   .social-links { gap: 10px 24px; }
   a { font-size: 14px; }
 }
