@@ -11,7 +11,6 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "hi i'm alfred.",
   description: "Alfred Liu's personal website.",
-  icons: { icon: '/favicon.png' },
   metadataBase: new URL('https://alfred-liu-minimal.alfredliu9.chatgpt.site'),
   openGraph: {
     title: "hi i'm alfred.",

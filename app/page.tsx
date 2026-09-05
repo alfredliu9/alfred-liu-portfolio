@@ -22,8 +22,9 @@ export default function Home() {
     <main className="page-wrapper">
       <div className="utility-page-content">
         <section className="intro-block">
-          <img src="/logo.png" alt="Alfred's logo" className="site-logo" />
-          <h1 className="heading heading-main">hi i'm alfred.</h1>
+          <h1 className="name-logo-frame">
+            <img src="/alfred-liu.png" alt="Alfred Liu" className="name-logo" />
+          </h1>
           <p>
             i'm a recent high school graduate who is currently conducting immunology research at the university of toronto and teaching myself how to code. i'm also working on a new version of this website, which will be live soon.
           </p>
