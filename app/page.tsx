@@ -2,6 +2,26 @@
 
 import { useEffect, useState } from 'react';
 
+function WrittenText({ children, start = 0, duration = 2.5 }: { children: string; start?: number; duration?: number }) {
+  const characters = Array.from(children);
+  const step = characters.length > 1 ? duration / (characters.length - 1) : 0;
+
+  return (
+    <span className="written-text" aria-label={children}>
+      {characters.map((character, index) => (
+        <span
+          aria-hidden="true"
+          className="written-character"
+          key={`${character}-${index}`}
+          style={{ animationDelay: `${start + (index * step)}s` }}
+        >
+          {character}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 const portfolioLinks = [
   { label: 'resume', href: 'https://drive.google.com/file/d/1Z74Mp15aJSjenHIHeGr_igfWwCMbVb8U/view?usp=sharing' },
   { label: 'CJGA sports photography', href: 'https://cjga.smugmug.com/' },
@@ -34,12 +54,12 @@ export default function Home() {
         <div className="worksheet-field name-field">
           <span className="field-label">name:</span>
           <span className="field-line name-line">
-            <img src="/alfred-liu.png" alt="Alfred Liu" className="header-name-logo" />
+            <img src="/alfred-liu.png" alt="Alfred Liu" className="header-name-logo handwriting-reveal name-reveal" />
           </span>
         </div>
         <div className="worksheet-field date-field">
           <span className="field-label">date:</span>
-          <time className="field-line date-line">
+          <time className={`field-line date-line${today ? ' date-ready' : ''}`}>
             {today}
           </time>
         </div>
@@ -48,18 +68,26 @@ export default function Home() {
       <div className="utility-page-content">
         <section className="intro-block">
           <p>
-            hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. i am interested in the intersection between sports, economics, and business. this website is my personal portfolio that keeps track of all of my sports marketing work, including graphic design, videography, photography, and website creation. check it out below :)
+            <WrittenText start={0.95} duration={3.8}>hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. i am interested in the intersection between sports, economics, and business. this website is my personal portfolio that keeps track of all of my sports marketing work, including graphic design, videography, photography, and website creation. check it out below :)</WrittenText>
           </p>
         </section>
 
         <section className="connect-block">
           <h2 className="collection-heading">
             <span className="sr-only">collection of my stuff:</span>
-            <img src="/collection-heading.png" alt="" className="collection-heading-art" />
+            <img src="/collection-heading.png" alt="" className="collection-heading-art handwriting-reveal collection-reveal" />
           </h2>
           <nav className="social-links" aria-label="Portfolio links">
             {portfolioLinks.map((link) => (
-              <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ '--link-index': portfolioLinks.indexOf(link) } as React.CSSProperties}
+              >
+                <WrittenText start={5.25 + (portfolioLinks.indexOf(link) * 0.42)} duration={0.65}>{link.label}</WrittenText>
+              </a>
             ))}
           </nav>
         </section>
