@@ -9,7 +9,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "hi i'm alfred.",
+  title: 'alfred liu',
   description: "Alfred Liu's personal website.",
   metadataBase: new URL('https://alfredliu.ca'),
   openGraph: {
