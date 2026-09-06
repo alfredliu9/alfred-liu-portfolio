@@ -11,7 +11,7 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: "hi i'm alfred.",
   description: "Alfred Liu's personal website.",
-  metadataBase: new URL('https://alfred-liu-minimal.alfredliu9.chatgpt.site'),
+  metadataBase: new URL('https://alfredliu.ca'),
   openGraph: {
     title: "hi i'm alfred.",
     description: "Alfred Liu's personal website.",
