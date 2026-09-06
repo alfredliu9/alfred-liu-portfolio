@@ -38,7 +38,7 @@ body { min-height: 100vh; min-height: 100dvh; background-color: #f8f6f1; backgro
 a { color: inherit; font-size: clamp(18px, 1.5vw, 21px); line-height: var(--paper-line); text-decoration: none; transition: color 0.15s ease; }
 a:hover { color: #999; }
 .social-links a { position: relative; min-height: var(--paper-line); padding: 0; line-height: var(--paper-line); }
-.social-links a::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 8px; background: url('/crayon-underline.png') center 48% / 100% auto no-repeat; mix-blend-mode: multiply; pointer-events: none; }
+.social-links a::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 8px; background: url('/crayon-underline-transparent.png') center 48% / 100% auto no-repeat; pointer-events: none; }
 .social-links a::after { transform: scaleX(0); transform-origin: left center; animation: underline-draw 0.45s ease-out forwards; animation-delay: calc(5.85s + (var(--link-index) * 0.42s)); }
 .social-links a:first-child::after { height: 10px; background-size: 180% auto; filter: hue-rotate(60deg) saturate(2) brightness(1.15); }
 .social-links a:nth-child(2)::after { filter: hue-rotate(35deg) saturate(1.15); }
@@ -83,7 +83,8 @@ a:hover { color: #999; }
 }
 @media screen and (max-width: 420px) {
   html, body { min-height: 100dvh; overflow-y: auto; }
-  :root { --paper-width: 860px; --paper-height: 645px; --paper-line: 30.5px; --margin-line: 59px; --content-gutter: 12px; }
+  :root { --paper-width: 860px; --paper-height: 645px; --paper-line: 30.5px; --margin-line: 42px; --content-gutter: 10px; }
+  body { background-position: -17px top; background-attachment: scroll; }
   .page-wrapper { padding-top: calc(var(--paper-line) * 5.2); padding-bottom: var(--paper-line); }
   .worksheet-header { top: 25px; gap: 5px; }
   .worksheet-field { gap: 6px; }
@@ -99,4 +100,12 @@ a:hover { color: #999; }
   .collection-heading-art { width: min(205px, 72vw); height: auto; }
   .social-links { column-gap: 18px; row-gap: 0; }
   a { font-size: 17px; line-height: var(--paper-line); }
+}
+@media screen and (max-width: 350px) {
+  :root { --margin-line: 36px; --content-gutter: 8px; }
+  body { background-position-x: -23px; }
+  .page-wrapper { padding-left: calc(var(--margin-line) + 8px); }
+  .worksheet-header { padding-left: calc(var(--margin-line) + 8px); }
+  .intro-block p, a { font-size: 16px; }
+  .social-links { column-gap: 14px; }
 }
