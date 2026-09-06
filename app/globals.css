@@ -11,7 +11,7 @@
 }
 * { box-sizing: border-box; }
 html, body { width: 100%; min-height: 100%; margin: 0; padding: 0; overflow-x: hidden; }
-body { min-height: 100vh; min-height: 100dvh; background-color: #f8f6f1; background-image: url('/lined-paper.png'); background-position: left top; background-size: var(--paper-width) var(--paper-height); background-repeat: repeat-y; background-attachment: fixed; color: var(--foreground); font-family: var(--font-caveat), Caveat, cursive; }
+body { min-height: 100vh; min-height: 100dvh; background-color: #f8f6f1; background-image: url('/lined-paper.png'), url('/lined-paper.png'); background-position: left top, left top; background-size: var(--paper-width) var(--paper-height), max(100%, var(--paper-width)) var(--paper-height); background-repeat: repeat-y, repeat-y; background-attachment: fixed, fixed; color: var(--foreground); font-family: var(--font-caveat), Caveat, cursive; }
 .page-wrapper { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; min-height: 100vh; min-height: 100dvh; padding: calc(var(--paper-line) * 3.2) var(--content-gutter) calc(var(--paper-line) * .8) calc(var(--margin-line) + 12px); }
 .utility-page-content { display: flex; width: min(100%, 1000px); margin: 0 auto; flex-direction: column; justify-content: flex-start; align-items: center; color: #000; text-align: center; }
 .intro-block { width: min(600px, 100%); margin: 0 auto 60px; text-align: center; }
@@ -84,7 +84,7 @@ a:hover { color: #999; }
 @media screen and (max-width: 420px) {
   html, body { min-height: 100dvh; overflow-y: auto; }
   :root { --paper-width: 860px; --paper-height: 645px; --paper-line: 30.5px; --margin-line: 42px; --content-gutter: 10px; }
-  body { background-position: -17px top; background-attachment: scroll; }
+  body { background-position: -17px top, left top; background-attachment: scroll, scroll; }
   .page-wrapper { padding-top: calc(var(--paper-line) * 5.2); padding-bottom: var(--paper-line); }
   .worksheet-header { top: 25px; gap: 5px; }
   .worksheet-field { gap: 6px; }
