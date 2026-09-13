@@ -24,6 +24,7 @@ function WrittenText({ children, start = 0, duration = 2.5 }: { children: string
 
 const portfolioLinks = [
   { label: 'resume', href: 'https://drive.google.com/file/d/1Z74Mp15aJSjenHIHeGr_igfWwCMbVb8U/view?usp=sharing' },
+  { label: 'tPortal', href: 'https://tportal.ca/' },
   { label: 'CJGA sports photography', href: 'https://cjga.smugmug.com/' },
   { label: 'CollegeLane web app', href: 'https://collegelane.ca/' },
   { label: 'PassNPlay Project website', href: 'https://passnplayproject.ca/' },
@@ -68,7 +69,7 @@ export default function Home() {
       <div className="utility-page-content">
         <section className="intro-block">
           <p>
-            <WrittenText start={0.95} duration={3.8}>hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. i am interested in the intersection between sports, economics, and business. this website is my personal portfolio that keeps track of all of my sports marketing work, including graphic design, videography, photography, and website creation. check it out below :)</WrittenText>
+            <WrittenText start={0.95} duration={3.8}>hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. i am interested in the intersection between sports, economics, and business. this website is my personal portfolio that keeps track of all my work, including graphic design, videography, photography, and website creation. check it out below :)</WrittenText>
           </p>
         </section>
 

@@ -41,11 +41,12 @@ a:hover { color: #999; }
 .social-links a::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 8px; background: url('/crayon-underline-transparent.png') center 48% / 100% auto no-repeat; pointer-events: none; }
 .social-links a::after { transform: scaleX(0); transform-origin: left center; animation: underline-draw 0.45s ease-out forwards; animation-delay: calc(5.85s + (var(--link-index) * 0.42s)); }
 .social-links a:first-child::after { height: 10px; background-size: 180% auto; filter: hue-rotate(60deg) saturate(2) brightness(1.15); }
-.social-links a:nth-child(2)::after { filter: hue-rotate(35deg) saturate(1.15); }
-.social-links a:nth-child(3)::after { filter: hue-rotate(100deg) saturate(1.2); }
-.social-links a:nth-child(4)::after { filter: hue-rotate(190deg) saturate(1.2); }
-.social-links a:nth-child(5)::after { filter: hue-rotate(235deg) saturate(1.2); }
-.social-links a:nth-child(6)::after { filter: hue-rotate(290deg) saturate(1.15); }
+.social-links a:nth-child(2)::after { filter: hue-rotate(60deg) saturate(1.2); }
+.social-links a:nth-child(3)::after { filter: hue-rotate(35deg) saturate(1.15); }
+.social-links a:nth-child(4)::after { filter: hue-rotate(100deg) saturate(1.2); }
+.social-links a:nth-child(5)::after { filter: hue-rotate(190deg) saturate(1.2); }
+.social-links a:nth-child(6)::after { filter: hue-rotate(235deg) saturate(1.2); }
+.social-links a:nth-child(7)::after { filter: hue-rotate(290deg) saturate(1.15); }
 .written-text { display: inline; }
 .written-character { opacity: 0; animation: character-write 0.16s ease-out forwards; }
 @keyframes character-write {
