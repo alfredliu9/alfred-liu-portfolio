@@ -29,7 +29,6 @@ const portfolioLinks = [
   { label: 'CollegeLane web app', href: 'https://collegelane.ca/' },
   { label: 'PassNPlay Project website', href: 'https://passnplayproject.ca/' },
   { label: 'CJGA graphic design and reels', href: 'https://www.instagram.com/cjgagolf/?hl=en' },
-  { label: 'Icarus Sun Protection marketing', href: 'https://drive.google.com/file/d/1po2foA1nS9AKY4qnxezroMeJ4d184Azc/view?usp=sharing' },
 ];
 
 export default function Home() {
