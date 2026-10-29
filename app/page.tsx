@@ -23,7 +23,7 @@ function WrittenText({ children, start = 0, duration = 2.5 }: { children: string
 }
 
 const portfolioLinks = [
-  { label: 'resume', href: 'https://drive.google.com/file/d/1Z74Mp15aJSjenHIHeGr_igfWwCMbVb8U/view?usp=sharing' },
+  { label: 'resume', href: '/alfred-liu-resume.pdf' },
   { label: 'Armin (prev. tPortal)', href: 'https://tportal.ca/' },
   { label: 'CJGA sports photography', href: 'https://cjga.smugmug.com/' },
   { label: 'CollegeLane web app', href: 'https://collegelane.ca/' },
