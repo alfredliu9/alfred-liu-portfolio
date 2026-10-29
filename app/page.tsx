@@ -68,7 +68,7 @@ export default function Home() {
       <div className="utility-page-content">
         <section className="intro-block">
           <p>
-            <WrittenText start={0.95} duration={3.8}>hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. i am interested in the intersection between sports, economics, and business. this website is my personal portfolio that keeps track of all my work, including graphic design, videography, photography, and website creation. check it out below :)</WrittenText>
+            <WrittenText start={0.95} duration={3.8}>hi i’m alfred. i am currently a first year student at the university of toronto in the rotman commerce program. this website is my personal portfolio that keeps track of all my work, including graphic design, videography, photography, and website creation. my goal is to build something that a billion people around the world, who have no idea who i even am, use like second nature whenever they fire up their laptops or open their phones. i promise you it'll happen. check my projects out below ↓</WrittenText>
           </p>
         </section>
 
