@@ -24,7 +24,7 @@ function WrittenText({ children, start = 0, duration = 2.5 }: { children: string
 
 const portfolioLinks = [
   { label: 'resume', href: '/alfred-liu-resume.pdf' },
-  { label: 'Armin (prev. tPortal)', href: 'https://tportal.ca/' },
+  { label: 'Armin (prev. tPortal)', href: 'https://getarmin.com/' },
   { label: 'CJGA sports photography', href: 'https://cjga.smugmug.com/' },
   { label: 'CollegeLane web app', href: 'https://collegelane.ca/' },
   { label: 'PassNPlay Project website', href: 'https://passnplayproject.ca/' },
