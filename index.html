@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Alfred Liu: Rotman Commerce student at U of T, co-founder of Armin, founder of The PassNPlay Project. Help Alfred through the maze to find out more.">
+<meta property="og:title" content="Alfred Liu">
+<meta property="og:description" content="Alfred Liu: Rotman Commerce student at U of T, co-founder of Armin, founder of The PassNPlay Project. Help Alfred through the maze to find out more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alfredliu.ca/">
+<meta name="theme-color" content="#cfe0ee">
+<link rel="icon" href="/icon.png" type="image/png">
+<title>Alfred Liu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Gloria+Hallelujah&family=Sniglet:wght@400;800&display=swap">
+<style>
+/* Layout: one printed worksheet on a classroom desk — header lines, title, instructions,
+   then the maze with a "Find these" picture checklist beside it (stacked on phones).
+   Deliberately single-look: a worksheet is white paper in any theme. */
+:root {
+  color-scheme: light;
+  --desk: #cfe0ee;        /* classroom-blue desk */
+  --desk-dot: #b9cfe2;
+  --paper: #ffffff;
+  --ink: #1a1a1a;         /* photocopier black */
+  --ink-soft: #4a4a4a;
+  --pencil: #5b5f66;      /* graphite handwriting */
+  --crayon-red: #e5402f;
+  --crayon-red-ink: #c4301e; /* darker red for small text (5.3:1) */
+  --crayon-yellow: #ffc93c;
+  --crayon-blue: #3a86ff;
+  --crayon-green: #3fae4a;
+  --rule: #9fb9d6;        /* blue writing-line rule */
+
+  --f-title: "Sniglet", "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
+  --f-body: "Andika", "Segoe UI", system-ui, sans-serif;  /* a typeface made for early readers */
+  --f-hand: "Gloria Hallelujah", "Comic Sans MS", cursive;  /* messy kid handwriting */
+  --crayon-orange: #ff8a1f;
+  --crayon-purple: #9b5de5;
+  --crayon-pink: #ff5fa2;
+}
+[hidden] { display: none !important; }
+html, body { min-height: 100%; }
+html, body { overflow-x: clip; }
+body {
+  margin: 0;
+  background-color: var(--desk);
+  background-image: radial-gradient(var(--desk-dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 40px;
+}
+.sheet {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--paper);
+  padding: 28px 36px 32px 64px;
+  box-shadow: 0 1px 0 #00000014, 0 14px 30px -18px #24476b66, inset 0 0 70px #c9b99a1f, inset 0 0 6px #b9a88a26;
+  border-radius: 3px;
+  /* paper texture: fine tooth + soft fibre clouds + slightly toned edges */
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27220%27%20height%3D%27220%27%3E%3Cfilter%20id%3D%27g%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.85%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20values%3D%270%200%200%200%20.35%20%200%200%200%200%20.31%20%200%200%200%200%20.25%20%200%200%200%201.6%20-.55%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23g)%27%20opacity%3D%27.22%27%2F%3E%3C%2Fsvg%3E"), url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27600%27%20height%3D%27600%27%3E%3Cfilter%20id%3D%27m%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.006%20.018%27%20numOctaves%3D%274%27%20seed%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20values%3D%270%200%200%200%20.6%20%200%200%200%200%20.54%20%200%200%200%200%20.42%20%200%200%200%201.4%20-.55%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23m)%27%20opacity%3D%27.14%27%2F%3E%3C%2Fsvg%3E");
+  background-size: 220px 220px, 600px 600px;
+  overflow: clip; /* keeps the stamp's slam-in animation from widening the page */
+}
+/* three-hole punch down the left margin */
+.holes { position: absolute; left: 18px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: space-around; padding-block: 60px; pointer-events: none; }
+.holes span { width: 20px; height: 20px; border-radius: 50%; background: var(--desk); box-shadow: inset 0 2px 3px #24476b40; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: flex-end; font-family: var(--f-body); font-weight: 700; }
+.field { display: flex; align-items: flex-end; gap: 8px; flex: 1 1 200px; min-width: 0; }
+/* the date never gets cut or squashed: if it can't fit beside "Found", Found drops to the next row */
+#dateLine { overflow: visible; text-overflow: clip; min-width: max-content; padding-right: 10px; }
+.meta .field:nth-child(2) { min-width: fit-content; }
+.field .line { flex: 1; border-bottom: 2px solid var(--ink); font-family: var(--f-hand); font-weight: 400; font-size: 1.3rem; color: var(--pencil); line-height: 1.25; padding: 0 6px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.field.score { flex: 0 0 auto; }
+.score .box { border: 2px solid var(--ink); border-radius: 8px; min-width: 74px; text-align: center; font-family: var(--f-hand); font-weight: 400; font-size: 1.3rem; line-height: 1.45; padding: 0 8px; color: var(--pencil); }
+.score .box.done { color: var(--crayon-red-ink); }
+
+h1 { font-family: var(--f-title); font-weight: 800; font-size: clamp(2.5rem, 8vw, 4.6rem); line-height: 1.1; margin: 22px 0 12px; letter-spacing: 0.02em; }
+/* crayon bubble letters: each one its own colour, outlined in marker, a bit crooked */
+.ltr { display: inline-block; color: var(--c); -webkit-text-stroke: 0.075em var(--ink); paint-order: stroke fill; text-shadow: 0.05em 0.06em 0 var(--ink); transform: rotate(var(--r)) translateY(var(--y)); transition: transform .18s; animation: hop .6s ease-out; animation-delay: var(--d); }
+.ltr.sp { width: 0.3em; }
+.word { display: inline-block; white-space: nowrap; }
+h1 .ltr:hover { transform: rotate(calc(var(--r) * -2)) translateY(-0.12em) scale(1.08); }
+/* each letter hops once in turn, starting and ending at rest so the title is never hidden */
+@keyframes hop { 0%, 100% { transform: rotate(var(--r)) translateY(var(--y)); } 35% { transform: rotate(calc(var(--r) * -1.5)) translateY(-0.28em) scale(1.08); } 70% { transform: rotate(var(--r)) translateY(0.04em) scale(.97); } }
+/* messy handwriting: letters drift off the line */
+.kid { display: inline-block; transform: rotate(var(--r)) translateY(var(--y)); font-size: var(--s); }
+.kid.sp { width: 0.28em; }
+.crayon .kid { color: var(--c); font-weight: 400; -webkit-text-stroke: 0.6px var(--c); }
+#nameLine { font-size: 1.75rem; line-height: 1.05; overflow: visible; padding-bottom: 2px; }
+.directions { margin: 0 0 20px; max-width: 64ch; font-size: 1.05rem; }
+.directions b { font-family: var(--f-title); font-weight: 800; }
+kbd { font-family: var(--f-body); font-weight: 700; font-size: 0.85em; border: 1.5px solid var(--ink); border-bottom-width: 3px; border-radius: 5px; padding: 0 5px; }
+
+.touch-only { display: none; }
+@media (pointer: coarse) { .touch-only { display: inline; } .key-only { display: none; } }
+.skip-link { all: unset; cursor: pointer; font-family: var(--f-title); font-weight: 800; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.skip-link:focus-visible { outline: 3px dashed var(--crayon-blue); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.play { display: grid; grid-template-columns: minmax(0, 1fr) 244px; gap: 28px; align-items: start; }
+.board { min-width: 0; position: relative; }
+.canvas-wrap { position: relative; width: 100%; display: flex; justify-content: center; }
+canvas#maze { display: block; touch-action: none; cursor: pointer; border-radius: 4px; }
+/* no grey/blue flash on tap in iOS / Android browsers */
+canvas#maze, .btn, .finder ul button, .skip-link { -webkit-tap-highlight-color: transparent; }
+canvas#maze, canvas#maze:focus, canvas#maze:focus-visible { outline: none; }
+
+.toast { min-height: 1.6em; text-align: center; font-family: var(--f-hand); font-size: 1.1rem; color: var(--crayon-red-ink); margin-top: 6px; }
+
+.finder { border: 2.5px dashed var(--ink); border-radius: 14px; padding: 14px 14px 10px; }
+.finder h2 { font-family: var(--f-title); font-weight: 800; font-size: 1.3rem; margin: 0 0 2px; }
+.finder p.hint { margin: 0 0 10px; font-size: 0.9rem; color: var(--ink-soft); }
+.finder ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.finder ul button { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 46px minmax(0,1fr) 22px; align-items: center; gap: 9px; padding: 5px 6px; border-radius: 10px; cursor: pointer; }
+.finder ul button:disabled { cursor: default; }
+.finder ul button:not(:disabled):hover { background: #fff6d6; }
+.finder ul button:focus-visible { outline: 3px dashed var(--crayon-blue); outline-offset: 1px; }
+.finder canvas { width: 46px; height: 46px; }
+.finder .what { font-size: 0.95rem; line-height: 1.25; min-width: 0; overflow-wrap: break-word; }
+.finder .what strong { display: block; font-family: var(--f-title); font-weight: 800; font-size: 1.02rem; }
+.finder .what span { color: var(--ink-soft); }
+.finder .tick { width: 20px; height: 20px; border: 2px solid var(--ink); border-radius: 4px; position: relative; }
+.finder li.got .tick::after { content: ""; position: absolute; left: 4px; top: -6px; width: 8px; height: 16px; border: solid var(--crayon-red); border-width: 0 4px 4px 0; transform: rotate(40deg); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 2px dashed #1a1a1a33; }
+.actions .btn { flex: 1 1 auto; text-align: center; }
+.btn { font-family: var(--f-title); font-weight: 800; font-size: 1rem; color: var(--ink); background: var(--paper); border: 2.5px solid var(--ink); border-radius: 999px; padding: 8px 18px; cursor: pointer; box-shadow: 0 3px 0 var(--ink); transition: transform .08s, box-shadow .08s; }
+.btn:hover { background: #fff6d6; }
+.btn:active { transform: translateY(3px); box-shadow: 0 0 0 var(--ink); }
+.btn:focus-visible { outline: 3px dashed var(--crayon-blue); outline-offset: 3px; }
+.btn.primary { background: var(--crayon-yellow); }
+.btn.small { font-size: 0.9rem; padding: 6px 14px; }
+
+
+.footer-note { margin-top: 26px; padding-top: 12px; border-top: 2px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font-size: 0.85rem; color: var(--ink-soft); }
+
+/* teacher's stamp when the maze is done */
+.stamp { position: absolute; right: 34px; top: 92px; width: 132px; height: 132px; border: 5px solid var(--crayon-red); border-radius: 50%; color: var(--crayon-red); display: grid; place-content: center; text-align: center; transform: rotate(-14deg); font-family: var(--f-title); font-weight: 800; line-height: 1; pointer-events: none; mix-blend-mode: multiply; }
+.stamp b { font-size: 3rem; display: block; }
+.stamp small { font-size: 0.95rem; display: block; margin-top: 4px; }
+.stamp.pop { animation: stamp .45s cubic-bezier(.2,1.6,.4,1) both; }
+@keyframes stamp { from { transform: rotate(-30deg) scale(1.3); opacity: 0; } to { transform: rotate(-14deg) scale(1); opacity: .92; } }
+
+.win { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.win .card { pointer-events: auto; background: var(--paper); border: 3px solid var(--ink); border-radius: 18px; padding: 18px 22px; text-align: center; max-width: 320px; box-shadow: 0 5px 0 var(--ink); }
+.win h2 { font-family: var(--f-title); font-weight: 800; font-size: 1.7rem; margin: 0 0 4px; }
+.win p { margin: 0 0 10px; }
+.win .card { max-width: 380px; }
+.win .promise { font-family: var(--f-hand); font-size: 1.35rem; line-height: 1.2; color: var(--crayon-red-ink); transform: rotate(-2deg); margin: 4px 0 12px; }
+.win .thanks { font-weight: 700; }
+/* when the card is taller than the maze (small mazes), it sits under the maze instead of on top */
+.canvas-wrap.stack { flex-direction: column; align-items: center; }
+.win.below { position: static; margin-top: 10px; width: 100%; }
+.win.below .card { max-width: 420px; margin: 0 auto; }
+.win .row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
+/* pop-ups */
+dialog { border: 3px solid var(--ink); border-radius: 20px; padding: 0; background: var(--paper); color: var(--ink); box-shadow: 0 6px 0 var(--ink); max-width: min(440px, calc(100vw - 32px)); width: 100%; }
+dialog::backdrop { background: #1f3a5566; }
+dialog[open] { animation: popin .28s cubic-bezier(.2,1.4,.4,1); }
+@keyframes popin { from { transform: scale(.7) rotate(-3deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.peek-body { padding: 20px 22px 20px; display: grid; gap: 10px; }
+.peek-top { display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 14px; align-items: center; }
+.peek-top canvas { width: 96px; height: 96px; background: #fff8dc; border: 2px solid var(--ink); border-radius: 50%; }
+.found-line { font-family: var(--f-hand); font-size: 1.1rem; color: var(--crayon-red-ink); margin: 0; line-height: 1.1; }
+.peek-body h2 { font-family: var(--f-title); font-weight: 800; font-size: 1.6rem; margin: 0; line-height: 1.1; text-wrap: balance; }
+.peek-body .sum { margin: 0; }
+.peek-body .count { font-size: 0.88rem; color: var(--ink-soft); margin: 0; }
+.peek-body .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+
+dialog.full { max-width: min(760px, calc(100vw - 24px)); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); }
+.full-inner { padding: 26px 28px 24px; overflow: auto; max-height: calc(100vh - 38px); max-height: calc(100dvh - 38px); box-sizing: border-box; }
+.full-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; position: sticky; top: -26px; background: var(--paper); padding-block: 8px; margin-top: -8px; z-index: 1; }
+.full-head h2 { font-family: var(--f-title); font-weight: 800; font-size: 1.15rem; margin: 0; color: var(--ink-soft); }
+.entry { display: grid; grid-template-columns: 84px minmax(0,1fr); gap: 18px; padding-block: 18px; border-bottom: 2px solid var(--rule); }
+.entry:last-child { border-bottom: 0; }
+.entry canvas { width: 84px; height: 84px; }
+.entry h3 { font-family: var(--f-title); font-weight: 800; font-size: 1.8rem; margin: 0 0 2px; line-height: 1.1; text-wrap: balance; }
+.entry .role { font-family: var(--f-hand); font-size: 1.05rem; color: var(--pencil); margin: 0 0 8px; }
+.entry p { margin: 0 0 10px; max-width: 62ch; }
+.entry ul { margin: 0 0 12px; padding-left: 1.2em; max-width: 60ch; }
+.entry li { margin-bottom: 4px; }
+.entry li::marker { color: var(--crayon-red); }
+.entry a.btn { display: inline-block; text-decoration: none; }
+.linkrow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.copyrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.copyrow code { font-family: var(--f-body); font-weight: 700; font-size: 1.05rem; background: #fff6d6; border: 2px dashed var(--ink); border-radius: 8px; padding: 2px 10px; user-select: all; }
+
+@media (max-width: 760px) {
+  .sheet { padding: 16px 12px 20px 30px; }
+  .holes { left: 8px; }
+  h1 { margin-top: 16px; }
+  .directions { margin-bottom: 14px; font-size: 1rem; }
+  .canvas-wrap { flex-direction: column; align-items: center; }
+  .win { position: static; margin-top: 10px; width: 100%; }
+  .meta { gap: 10px 16px; }
+  .meta .field:first-child { flex-basis: 100%; }
+  .meta .field { flex: 1 1 120px; }
+  .meta .field.score { flex: 0 0 auto; }
+  .win .card { max-width: none; }
+  .holes span { width: 15px; height: 15px; }
+  .play { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .finder ul { grid-template-columns: repeat(auto-fill, minmax(min(100%, 215px), 1fr)); column-gap: 10px; }
+  .finder ul button { grid-template-columns: 44px minmax(0,1fr) 22px; gap: 8px; }
+  .finder canvas { width: 44px; height: 44px; }
+  .stamp { width: 84px; height: 84px; right: 10px; top: auto; bottom: 56px; border-width: 4px; }
+  .stamp b { font-size: 2.1rem; }
+  .stamp small { font-size: 0.75rem; }
+  .entry { grid-template-columns: minmax(0,1fr); gap: 6px; }
+  .entry canvas { width: 64px; height: 64px; }
+  .full-inner { padding: 20px 18px; }
+  .full-head { top: -20px; }
+}
+/* opening: the worksheet lands on the desk, then each part is "written" in from top to bottom */
+:root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --ease-bounce: cubic-bezier(0.34, 1.36, 0.64, 1); }
+body:not(.intro-done) .sheet { animation: land .7s var(--ease-out) both; }
+@keyframes land { from { opacity: 0; transform: translateY(36px) rotate(-2.2deg) scale(.97); } to { opacity: 1; transform: none; } }
+body:not(.intro-done) .rise { animation: rise .5s var(--ease-out) both; animation-delay: calc(260ms + var(--i, 0) * 60ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+body:not(.intro-done) .holes span { animation: punch .35s var(--ease-bounce) both; }
+.holes span:nth-child(1) { animation-delay: .45s; } .holes span:nth-child(2) { animation-delay: .55s; } .holes span:nth-child(3) { animation-delay: .65s; }
+@keyframes punch { from { transform: scale(0); } to { transform: scale(1); } }
+body:not(.intro-done) .finder li { animation: tick-in .4s var(--ease-bounce) both; animation-delay: calc(900ms + var(--i, 0) * 70ms); }
+@keyframes tick-in { from { opacity: 0; transform: translateX(14px) scale(.9); } to { opacity: 1; transform: none; } }
+body.intro-done .ltr { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  body .sheet, body .rise, body .holes span, body .finder li { animation: none !important; }
+  .ltr { animation: none; transition: none; }
+  dialog[open], .stamp.pop { animation: none; }
+  .stamp.pop { opacity: .92; }
+}
+</style>
+</head>
+<body>
+<main>
+  <article class="sheet" id="sheet">
+    <div class="holes" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <div class="meta rise" style="--i:0">
+      <div class="field"><span>Name:</span><span class="line" id="nameLine">Alfred Liu</span></div>
+      <div class="field"><span>Date:</span><span class="line" id="dateLine"></span></div>
+      <div class="field score"><span>Found:</span><span class="box" id="scoreBox">0/7</span></div>
+    </div>
+
+    <h1 id="title" aria-label="Alfred's Maze">Alfred's Maze</h1>
+    <p class="directions rise" style="--i:3"><b>Directions:</b> Help Alfred through the maze. Pick up every picture on the way to learn about me, then walk to the flag. <span class="key-only">Use the <kbd>&larr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd> <kbd>&darr;</kbd> keys, or click a spot in the maze to walk there.</span><span class="touch-only">Tap a spot in the maze to walk there, or swipe to run down a hallway.</span> Just want to read? <span style="white-space:nowrap"><button class="skip-link" id="skipTop" type="button">See everything</button>.</span></p>
+    <p class="sr-only" id="announce" aria-live="polite"></p>
+
+    <div class="play">
+      <div class="board rise" style="--i:4">
+        <div class="canvas-wrap" id="wrap">
+          <canvas id="maze" tabindex="0" role="application" aria-label="Maze. Use the arrow keys to move Alfred. Picking up a picture opens a short note about it."></canvas>
+          <div class="win" id="win" hidden>
+            <div class="card" role="status">
+              <h2>You did it!</h2>
+              <p>You found all 7 things and made it to the flag.</p>
+              <p>My goal is to build something that a billion people around the world, who have no idea who I am, use like second nature whenever they open their laptops or phones.</p>
+              <p class="promise">I promise you it'll happen.</p>
+              <p class="thanks">Thanks for visiting!</p>
+              <div class="row">
+                <button class="btn primary small" id="winAll" type="button">See everything</button>
+                <button class="btn small" id="winAgain" type="button">Play again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="toast" id="toast" aria-live="polite"></div>
+      </div>
+
+      <aside class="finder rise" style="--i:5" aria-labelledby="findH">
+        <h2 id="findH">Find these</h2>
+        <p class="hint">Each one colors in when you pick it up. Tap a found one to read it again.</p>
+        <ul id="finderList"></ul>
+        <div class="actions">
+          <button class="btn small" id="skipBtn" type="button">Skip the maze</button>
+          <button class="btn small" id="resetBtn" type="button">Start over</button>
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer-note rise" style="--i:7">
+      <span>Worksheet 1 of 1 &middot; Level: easy peasy</span>
+      <span>Pencils down when you reach the flag</span>
+    </div>
+
+    <div class="stamp" id="stamp" hidden aria-hidden="true"><div><b>A+</b><small>Great job!</small></div></div>
+  </article>
+</main>
+
+<dialog id="peek" aria-labelledby="peekTitle">
+  <div class="peek-body">
+    <div class="peek-top">
+      <canvas id="peekIcon" width="192" height="192" aria-hidden="true"></canvas>
+      <div>
+        <p class="found-line" id="peekFound">You found a golf ball!</p>
+        <h2 id="peekTitle"></h2>
+      </div>
+    </div>
+    <p class="sum" id="peekSum"></p>
+    <p class="count" id="peekCount"></p>
+    <div class="row">
+      <button class="btn primary" id="peekOpen" type="button">Read more</button>
+      <button class="btn" id="peekClose" type="button">Keep going</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="full" class="full" aria-labelledby="fullTitle">
+  <div class="full-inner" id="fullInner">
+    <div class="full-head">
+      <h2 id="fullTitle">About me</h2>
+      <button class="btn small" id="fullClose" type="button">Back to the maze</button>
+    </div>
+    <div id="fullBody"></div>
+  </div>
+</dialog>
+
+<script>
+/* ---------------------------------------------------------------
+   EDIT ME: everything the maze says about you lives here.
+   short = name in the checklist once found
+   type = which drawing to use: golf | laptop | soccer | stopwatch | book | trophy | plane
+   --------------------------------------------------------------- */
+const ME = { name: "Alfred Liu", kidName: "Alfred" };
+const CONTENT = [
+  {
+    id: "golf", short: "CJGA", type: "golf", thing: "a golf ball",
+    title: "CJGA",
+    role: "Marketing & Operations Intern, Canadian Junior Golf Association. Summers 2025 and 2026",
+    summary: "Two summers on the junior golf tour: 600k+ views and 4,600+ new followers from my content, plus 20 tour events run from check-in to scoring.",
+    body: [
+      "At the Canadian Junior Golf Association I split my time between the camera and the course. I shot the tournament photos, made the graphics and reels for the CJGA's Instagram, and tracked how much exposure our sponsors were getting.",
+      "On event days I was out at the course: check-in, scoring, pace of play, sponsor activations, and whatever else came up before the last group finished."
+    ],
+    highlights: ["Social content with 600k+ views", "Generated 4,600+ new followers", "Supported 20 junior tour events", "Sponsor reach and engagement tracking, plus partner recap materials"],
+    links: [
+      { label: "See my photos", href: "https://cjga.smugmug.com/" },
+      { label: "See the reels", href: "https://www.instagram.com/cjgagolf/?hl=en" }
+    ]
+  },
+  {
+    id: "armin", short: "Armin", type: "laptop", thing: "a laptop",
+    title: "Armin (prev. tPortal)",
+    role: "Co-Founder. Sept. 2026 to now",
+    summary: "A browser extension that reorganizes your university's course software into one place, with a built-in AI tutor that already knows your courses. 200+ users in its first 3 days.",
+    body: [
+      "Armin is a browser extension that transforms university learning software by reorganizing course materials, deadlines, and schedules into one intuitive interface. This reorganization gives our built-in AI tutor the context to understand each student's courses and deliver personalized teaching without requiring manual file uploads.",
+      "I lead product positioning, user acquisition, marketing, and campus outreach. We originally built tPortal, a desktop app for U of T students that reached 100+ daily active users in its first week, before pivoting to Armin to reach students at universities worldwide."
+    ],
+    highlights: ["200+ users within 3 days of Armin's launch", "50K+ organic social media views", "tPortal: 100+ daily active users in its first week"],
+    links: [{ label: "Visit Armin", href: "https://getarmin.com/" }]
+  },
+  {
+    id: "passnplay", short: "PassNPlay", type: "soccer", thing: "a soccer ball",
+    title: "The PassNPlay Project",
+    role: "Founder & President. Mar. 2024 to now",
+    summary: "A youth sports nonprofit I started: 500+ pieces of equipment handed out and $7k+ raised so more kids can play.",
+    body: [
+      "PassNPlay collects used sports equipment, gets it to kids who need it, and gives out microgrants for sports programs. It's now a team of 15.",
+      "I lead fundraising and outreach: 9 high-school drop-off sites, school partnerships, social media and pitch events, plus the sponsor materials and impact reports."
+    ],
+    highlights: ["500+ items distributed", "$7k+ raised for sports programs", "$3,000 USD from the IB Global Youth Action Fund"],
+    links: [{ label: "Visit PassNPlay", href: "https://passnplayproject.ca/" }]
+  },
+  {
+    id: "collegelane", short: "CollegeLane", type: "stopwatch", thing: "a stopwatch",
+    title: "CollegeLane",
+    role: "Web app I built. 2026",
+    summary: "A lot of my friends had no idea they could get recruited. I built CollegeLane so Canadian track & field athletes can see where their marks could take them.",
+    body: [
+      "Lots of my friends on the track team had no idea they were good enough to get recruited by NCAA or U SPORTS schools. Nobody had ever told them, so they never thought to look.",
+      "I built CollegeLane to fix that. It matches athletes with schools using their event, personal bests, season, wind and meet data, so they can see their options for themselves.",
+      "It also explains eligibility, scholarships, admissions and how to reach out to coaches."
+    ],
+    highlights: ["Personalized school recommendations", "Performance matching from real meet data", "Guides for NCAA and U SPORTS recruiting"],
+    links: [{ label: "Visit CollegeLane", href: "https://collegelane.ca/" }]
+  },
+  {
+    id: "school", short: "School", type: "book", thing: "a book",
+    title: "School",
+    role: "University of Toronto, Rotman Commerce. 2026 to 2030",
+    summary: "First-year Rotman Commerce student at U of T, planning to specialize in Finance and Economics. IB Diploma at Upper Canada College.",
+    body: [
+      "I'm in my first year of a Bachelor of Commerce at Rotman, aiming for the Finance and Economics specialist. Before that I did the IB Diploma at Upper Canada College, the best private boys' school in Canada, with HL Economics, Film and English Literature.",
+      "I was picked as 1 of 30 mentees from 400+ applicants for the Rotman Commerce Finance Association's mentorship program. I'm also a Marketing Associate in the U of T Sports Business Club, where I manage the club's social media pages."
+    ],
+    highlights: [],
+    links: []
+  },
+  {
+    id: "awards", short: "Awards", type: "trophy", thing: "a trophy",
+    title: "Wins and awards",
+    role: "Competitions and programs",
+    summary: "Pitch competitions and youth funds, like being 1 of 100 teams picked worldwide from 1,100+. Over $7k in funding won.",
+    body: [
+      "Most of these came from pitching ideas I really care about, mostly PassNPlay, to judges who had never heard of me."
+    ],
+    highlights: [
+      "SPRINT Entrepreneurship Challenge (2025): won 1 of 3 Ontario team spots out of 16 with an AI food-sorting idea, plus $3k CAD",
+      "IB Global Youth Action Fund (2025): 1 of 100 teams from 1,100+ applicants worldwide, $3,000 USD for PassNPlay",
+      "Youth Impact Summer Challenge (2025): national semi-finalist, 1 of 12 teams from 120+, $1,000 CAD",
+      "Yale Young Global Scholars (2024): 10% acceptance rate. 2-week Literature, Philosophy & Culture program at Yale"
+    ],
+    links: []
+  },
+  {
+    id: "contact", short: "Say hi", type: "plane", thing: "a paper plane",
+    title: "Say hi",
+    role: "How to reach me",
+    summary: "Want to talk startups, golf, sports or a project? Email me, or find me on LinkedIn and X.",
+    body: [
+      "I'm always up to talk about startups, golf, sports, or anything I've built. Email is the best way to reach me."
+    ],
+    highlights: [],
+    email: "alfredliu9@gmail.com",
+    links: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/alfred-liu-8349b3398/" },
+      { label: "X (Twitter)", href: "https://x.com/real_alfred_liu" },
+      { label: "My resume (PDF)", href: "https://alfredliu.ca/alfred-liu-resume.pdf" }
+    ]
+  }
+];
+
+/* ---------------- palette (mirrors the CSS tokens) ---------------- */
+const INK = "#1a1a1a", PAPER = "#ffffff", RED = "#e5402f", YEL = "#ffc93c", BLUE = "#3a86ff", GREEN = "#3fae4a";
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------------- maze generation (seeded, so it is the same for every visitor) ---------------- */
+const COLS = 11, ROWS = 9;
+const N = 1, E = 2, S = 4, W = 8;
+const DIRS = {
+  up:    { dx: 0, dy: -1, bit: N, opp: S },
+  right: { dx: 1, dy: 0,  bit: E, opp: W },
+  down:  { dx: 0, dy: 1,  bit: S, opp: N },
+  left:  { dx: -1, dy: 0, bit: W, opp: E }
+};
+function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const idx = (x, y) => y * COLS + x;
+
+function buildMaze(seed) {
+  const rnd = mulberry32(seed);
+  const walls = new Array(COLS * ROWS).fill(N | E | S | W);
+  const seen = new Array(COLS * ROWS).fill(false);
+  const stack = [[0, 0]]; seen[0] = true;
+  while (stack.length) {
+    const [x, y] = stack[stack.length - 1];
+    const opts = Object.values(DIRS).filter(d => {
+      const nx = x + d.dx, ny = y + d.dy;
+      return nx >= 0 && ny >= 0 && nx < COLS && ny < ROWS && !seen[idx(nx, ny)];
+    });
+    if (!opts.length) { stack.pop(); continue; }
+    const d = opts[Math.floor(rnd() * opts.length)];
+    const nx = x + d.dx, ny = y + d.dy;
+    walls[idx(x, y)] &= ~d.bit; walls[idx(nx, ny)] &= ~d.opp;
+    seen[idx(nx, ny)] = true; stack.push([nx, ny]);
+  }
+  // knock out a few extra walls so there is more than one way around (worksheet mazes have loops)
+  let extra = 6, guard = 0;
+  while (extra > 0 && guard++ < 500) {
+    const x = Math.floor(rnd() * (COLS - 1)), y = Math.floor(rnd() * ROWS);
+    if (walls[idx(x, y)] & E) { walls[idx(x, y)] &= ~E; walls[idx(x + 1, y)] &= ~W; extra--; }
+  }
+  return walls;
+}
+const walls = buildMaze(20261104);
+const START = [0, 0], FINISH = [COLS - 1, ROWS - 1];
+
+function openings(x, y) { const w = walls[idx(x, y)]; return Object.entries(DIRS).filter(([, d]) => !(w & d.bit)).map(([k]) => k); }
+function canMove(x, y, dir) { const d = DIRS[dir]; const nx = x + d.dx, ny = y + d.dy; return nx >= 0 && ny >= 0 && nx < COLS && ny < ROWS && !(walls[idx(x, y)] & d.bit); }
+
+function bfs(from) {
+  const dist = new Array(COLS * ROWS).fill(-1), prev = new Array(COLS * ROWS).fill(null);
+  const q = [from]; dist[idx(...from)] = 0;
+  while (q.length) {
+    const [x, y] = q.shift();
+    for (const [k, d] of Object.entries(DIRS)) {
+      if (!canMove(x, y, k)) continue;
+      const ni = idx(x + d.dx, y + d.dy);
+      if (dist[ni] < 0) { dist[ni] = dist[idx(x, y)] + 1; prev[ni] = [x, y, k]; q.push([x + d.dx, y + d.dy]); }
+    }
+  }
+  return { dist, prev };
+}
+
+// place items: prefer dead ends, spread far apart (farthest-point sampling)
+function placeItems() {
+  const cells = [];
+  for (let y = 0; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
+    if ((x === START[0] && y === START[1]) || (x === FINISH[0] && y === FINISH[1])) continue;
+    cells.push({ x, y, dead: openings(x, y).length === 1 });
+  }
+  const pool = cells.filter(c => c.dead).length >= CONTENT.length ? cells.filter(c => c.dead) : cells;
+  const chosen = [];
+  const anchors = [{ x: START[0], y: START[1] }, { x: FINISH[0], y: FINISH[1] }];
+  for (let i = 0; i < CONTENT.length; i++) {
+    let best = null, bestD = -1;
+    for (const c of pool) {
+      if (chosen.includes(c)) continue;
+      const d = Math.min(...[...anchors, ...chosen].map(a => Math.abs(a.x - c.x) + Math.abs(a.y - c.y)));
+      if (d > bestD) { bestD = d; best = c; }
+    }
+    chosen.push(best);
+  }
+  return CONTENT.map((c, i) => ({ ...c, x: chosen[i].x, y: chosen[i].y }));
+}
+const ITEMS = placeItems();
+
+/* ---------------- drawing: items (shared by maze, checklist and pop-ups) ---------------- */
+function star(ctx, x, y, r, pts = 5) {
+  ctx.beginPath();
+  for (let i = 0; i < pts * 2; i++) {
+    const a = -Math.PI / 2 + i * Math.PI / pts, rr = i % 2 ? r * 0.45 : r;
+    ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr);
+  }
+  ctx.closePath();
+}
+function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); }
+
+function drawItem(ctx, type, x, y, s, t, colored) {
+  const fill = (c) => colored ? c : PAPER;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.lineWidth = Math.max(1.4, s * 0.055);
+  ctx.lineJoin = "round"; ctx.lineCap = "round";
+  ctx.strokeStyle = INK;
+  const k = s; // shorthand
+  if (type === "golf") {
+    if (colored) { ctx.fillStyle = GREEN; ctx.beginPath(); ctx.ellipse(0, k * 0.4, k * 0.36, k * 0.08, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.ellipse(0, k * 0.4, k * 0.36, k * 0.08, 0, 0, Math.PI * 2); ctx.stroke(); }
+    // tee
+    ctx.beginPath(); ctx.moveTo(-k * 0.13, k * 0.06); ctx.lineTo(k * 0.13, k * 0.06); ctx.lineTo(k * 0.035, k * 0.16); ctx.lineTo(k * 0.03, k * 0.4); ctx.lineTo(-k * 0.03, k * 0.4); ctx.lineTo(-k * 0.035, k * 0.16); ctx.closePath();
+    ctx.fillStyle = fill("#f28c28"); ctx.fill(); ctx.stroke();
+    // ball, rolling dimples
+    const by = -k * 0.16, br = k * 0.24;
+    ctx.beginPath(); ctx.arc(0, by, br, 0, Math.PI * 2); ctx.fillStyle = PAPER; ctx.fill(); ctx.stroke();
+    ctx.save(); ctx.beginPath(); ctx.arc(0, by, br * 0.9, 0, Math.PI * 2); ctx.clip();
+    ctx.fillStyle = "rgba(26,26,26,.45)";
+    const spin = (t * 0.9) % 1;
+    for (let row = -2; row <= 2; row++) for (let col = -3; col <= 3; col++) {
+      const dx = (col + spin + (row % 2 ? 0.5 : 0)) * br * 0.36, dy = row * br * 0.36;
+      const f = 1 - Math.min(1, Math.hypot(dx, dy) / br);
+      if (f <= 0) continue;
+      ctx.beginPath(); ctx.arc(dx, by + dy, br * 0.075 * (0.5 + f), 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  } else if (type === "laptop") {
+    rr(ctx, -k * 0.38, -k * 0.38, k * 0.76, k * 0.52, k * 0.05); ctx.fillStyle = fill("#2b3a67"); ctx.fill(); ctx.stroke();
+    const lines = [[0.0, 0.34, YEL], [0.1, 0.24, "#8ff0a4"], [0.1, 0.4, "#8ff0a4"], [0.0, 0.18, "#ff9db0"]];
+    ctx.lineWidth = Math.max(1.2, k * 0.045);
+    lines.forEach(([indent, len, c], i) => {
+      ctx.strokeStyle = colored ? c : INK;
+      const ly = -k * 0.27 + i * k * 0.1;
+      ctx.beginPath(); ctx.moveTo(-k * 0.27 + indent * k, ly); ctx.lineTo(-k * 0.27 + (indent + len) * k, ly); ctx.stroke();
+    });
+    if (Math.floor(t * 2.2) % 2 === 0 || reduceMotion) { ctx.fillStyle = colored ? PAPER : INK; ctx.fillRect(-k * 0.27 + k * 0.22, -k * 0.27 + 3 * k * 0.1 - k * 0.03, k * 0.07, k * 0.06); }
+    ctx.strokeStyle = INK; ctx.lineWidth = Math.max(1.4, k * 0.055);
+    ctx.beginPath(); ctx.moveTo(-k * 0.42, k * 0.14); ctx.lineTo(k * 0.42, k * 0.14); ctx.lineTo(k * 0.5, k * 0.3); ctx.lineTo(-k * 0.5, k * 0.3); ctx.closePath();
+    ctx.fillStyle = fill("#c9ced6"); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-k * 0.08, k * 0.22); ctx.lineTo(k * 0.08, k * 0.22); ctx.stroke();
+  } else if (type === "soccer") {
+    const roll = reduceMotion ? 0 : t * 1.6;
+    ctx.fillStyle = "rgba(26,26,26,.12)"; ctx.beginPath(); ctx.ellipse(0, k * 0.4, k * 0.3, k * 0.06, 0, 0, Math.PI * 2); ctx.fill();
+    const r = k * 0.36;
+    if (colored) { ctx.fillStyle = GREEN; ctx.beginPath(); ctx.ellipse(0, k * 0.4, k * 0.34, k * 0.07, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fillStyle = PAPER; ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.clip(); ctx.rotate(roll);
+    const pent = (cx, cy, pr, rot) => { ctx.beginPath(); for (let i = 0; i < 5; i++) { const an = rot + i * Math.PI * 2 / 5; ctx.lineTo(cx + Math.cos(an) * pr, cy + Math.sin(an) * pr); } ctx.closePath(); };
+    ctx.fillStyle = INK;
+    pent(0, 0, r * 0.36, -Math.PI / 2); ctx.fill();
+    for (let i = 0; i < 5; i++) {
+      const an = -Math.PI / 2 + i * Math.PI * 2 / 5, ab = an + Math.PI / 5;
+      // seam from each corner of the middle patch out to the next patch
+      ctx.beginPath(); ctx.moveTo(Math.cos(an) * r * 0.36, Math.sin(an) * r * 0.36); ctx.lineTo(Math.cos(an) * r * 0.66, Math.sin(an) * r * 0.66); ctx.stroke();
+      // edge patches, half hidden past the rim
+      pent(Math.cos(an) * r * 1.02, Math.sin(an) * r * 1.02, r * 0.38, an + Math.PI); ctx.fill();
+      // hexagon seams between them
+      ctx.beginPath(); ctx.moveTo(Math.cos(an) * r * 0.66, Math.sin(an) * r * 0.66); ctx.lineTo(Math.cos(ab) * r * 0.78, Math.sin(ab) * r * 0.78); ctx.lineTo(Math.cos(an + Math.PI * 2 / 5) * r * 0.66, Math.sin(an + Math.PI * 2 / 5) * r * 0.66); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(Math.cos(ab) * r * 0.78, Math.sin(ab) * r * 0.78); ctx.lineTo(Math.cos(ab) * r * 1.1, Math.sin(ab) * r * 1.1); ctx.stroke();
+    }
+    ctx.restore();
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.stroke();
+  } else if (type === "stopwatch") {
+    const r = k * 0.32, cy = k * 0.06;
+    rr(ctx, -k * 0.07, cy - r - k * 0.14, k * 0.14, k * 0.09, k * 0.02); ctx.fillStyle = fill(RED); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, cy - r - k * 0.05); ctx.lineTo(0, cy - r); ctx.stroke();
+    ctx.save(); ctx.translate(r * 0.78, cy - r * 0.78); ctx.rotate(Math.PI / 4); rr(ctx, -k * 0.04, -k * 0.05, k * 0.08, k * 0.07, k * 0.015); ctx.fillStyle = fill(RED); ctx.fill(); ctx.stroke(); ctx.restore();
+    ctx.beginPath(); ctx.arc(0, cy, r, 0, Math.PI * 2); ctx.fillStyle = fill(YEL); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0, cy, r * 0.78, 0, Math.PI * 2); ctx.fillStyle = PAPER; ctx.fill(); ctx.stroke();
+    ctx.save(); ctx.lineWidth = Math.max(1, k * 0.03);
+    for (let i = 0; i < 12; i++) { const an = i * Math.PI / 6; const a1 = i % 3 ? 0.66 : 0.58; ctx.beginPath(); ctx.moveTo(Math.cos(an) * r * a1, cy + Math.sin(an) * r * a1); ctx.lineTo(Math.cos(an) * r * 0.72, cy + Math.sin(an) * r * 0.72); ctx.stroke(); }
+    ctx.restore();
+    const hand = (reduceMotion ? 0.3 : t * 1.4) - Math.PI / 2;
+    ctx.save(); ctx.strokeStyle = colored ? RED : INK; ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(Math.cos(hand) * r * 0.62, cy + Math.sin(hand) * r * 0.62); ctx.stroke(); ctx.restore();
+    ctx.beginPath(); ctx.arc(0, cy, k * 0.035, 0, Math.PI * 2); ctx.fillStyle = INK; ctx.fill();
+  } else if (type === "book") {
+    const flap = reduceMotion ? 0 : Math.sin(t * 2.4) * 0.04;
+    // cover
+    ctx.beginPath(); ctx.moveTo(0, -k * 0.2); ctx.lineTo(-k * 0.48, -k * 0.27); ctx.lineTo(-k * 0.48, k * 0.3); ctx.lineTo(0, k * 0.38); ctx.lineTo(k * 0.48, k * 0.3); ctx.lineTo(k * 0.48, -k * 0.27); ctx.closePath();
+    ctx.fillStyle = fill(RED); ctx.fill(); ctx.stroke();
+    // pages
+    for (const side of [-1, 1]) {
+      const lift = side === 1 ? flap : -flap;
+      ctx.beginPath(); ctx.moveTo(0, -k * 0.24); ctx.lineTo(side * k * 0.43, -k * (0.33 + lift)); ctx.lineTo(side * k * 0.43, k * (0.22 - lift)); ctx.lineTo(0, k * 0.31); ctx.closePath();
+      ctx.fillStyle = PAPER; ctx.fill(); ctx.stroke();
+      ctx.save(); ctx.lineWidth = Math.max(1, k * 0.03); ctx.strokeStyle = colored ? BLUE : INK;
+      for (let i = 0; i < 4; i++) { const ly = -k * 0.16 + i * k * 0.1; ctx.beginPath(); ctx.moveTo(side * k * 0.08, ly); ctx.lineTo(side * k * 0.34, ly - k * 0.03); ctx.stroke(); }
+      ctx.restore();
+    }
+  } else if (type === "trophy") {
+    ctx.beginPath(); ctx.arc(-k * 0.28, -k * 0.2, k * 0.12, Math.PI * 0.5, Math.PI * 1.5); ctx.stroke();
+    ctx.beginPath(); ctx.arc(k * 0.28, -k * 0.2, k * 0.12, -Math.PI * 0.5, Math.PI * 0.5); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-k * 0.3, -k * 0.38); ctx.lineTo(k * 0.3, -k * 0.38); ctx.quadraticCurveTo(k * 0.3, k * 0.06, 0, k * 0.08); ctx.quadraticCurveTo(-k * 0.3, k * 0.06, -k * 0.3, -k * 0.38); ctx.closePath();
+    ctx.fillStyle = fill(YEL); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.rect(-k * 0.05, k * 0.08, k * 0.1, k * 0.14); ctx.fillStyle = fill(YEL); ctx.fill(); ctx.stroke();
+    rr(ctx, -k * 0.22, k * 0.22, k * 0.44, k * 0.14, k * 0.03); ctx.fillStyle = fill("#b0743a"); ctx.fill(); ctx.stroke();
+    // star on the cup
+    star(ctx, 0, -k * 0.17, k * 0.1); ctx.fillStyle = colored ? PAPER : PAPER; ctx.fill(); ctx.lineWidth = Math.max(1, k * 0.035); ctx.stroke();
+    // twinkle
+    const tw = reduceMotion ? 1 : 0.6 + 0.4 * Math.sin(t * 5);
+    ctx.save(); ctx.translate(k * 0.38, -k * 0.42); ctx.rotate(t * 1.5 * (reduceMotion ? 0 : 1)); star(ctx, 0, 0, k * 0.09 * tw, 4); ctx.fillStyle = colored ? YEL : PAPER; ctx.fill(); ctx.lineWidth = Math.max(1, k * 0.03); ctx.stroke(); ctx.restore();
+  } else if (type === "plane") {
+    const tilt = reduceMotion ? 0 : Math.sin(t * 2) * 0.08;
+    ctx.save(); ctx.lineWidth = Math.max(1, k * 0.035); ctx.setLineDash([k * 0.06, k * 0.07]);
+    ctx.beginPath(); ctx.moveTo(-k * 0.5, k * 0.36); ctx.bezierCurveTo(-k * 0.3, k * 0.1, -k * 0.55, -k * 0.05, -k * 0.38, -k * 0.08); ctx.stroke(); ctx.restore();
+    ctx.rotate(tilt);
+    const nose = [k * 0.44, -k * 0.12], tailT = [-k * 0.36, -k * 0.34], tailB = [-k * 0.22, k * 0.26], fold = [-k * 0.06, k * 0.04];
+    ctx.beginPath(); ctx.moveTo(...nose); ctx.lineTo(...tailT); ctx.lineTo(...fold); ctx.closePath(); ctx.fillStyle = fill("#9fd0ff"); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...nose); ctx.lineTo(...fold); ctx.lineTo(...tailB); ctx.closePath(); ctx.fillStyle = fill("#5aa2f0"); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...fold); ctx.lineTo(-k * 0.12, k * 0.16); ctx.lineTo(...tailB); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawKid(ctx, x, y, s, t, moving, face) {
+  const step = moving && !reduceMotion ? Math.sin(t * 16) : 0;
+  const bob = moving && !reduceMotion ? Math.abs(step) * s * 0.05 : (reduceMotion ? 0 : Math.sin(t * 3) * s * 0.012);
+  ctx.save(); ctx.translate(x, y - bob);
+  ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.strokeStyle = INK; ctx.lineWidth = Math.max(1.5, s * 0.055);
+  // shadow
+  ctx.fillStyle = "rgba(26,26,26,.12)"; ctx.beginPath(); ctx.ellipse(0, s * 0.43 + bob, s * 0.22, s * 0.05, 0, 0, Math.PI * 2); ctx.fill();
+  // legs
+  ctx.beginPath(); ctx.moveTo(-s * 0.08, s * 0.2); ctx.lineTo(-s * 0.09 + step * s * 0.08, s * 0.4); ctx.moveTo(s * 0.08, s * 0.2); ctx.lineTo(s * 0.09 - step * s * 0.08, s * 0.4); ctx.stroke();
+  // sneakers
+  ctx.fillStyle = RED;
+  for (const [sx, sw] of [[-0.09 + step * 0.08, -1], [0.09 - step * 0.08, 1]]) { ctx.beginPath(); ctx.ellipse(s * sx + sw * s * 0.02, s * 0.41, s * 0.065, s * 0.04, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+  // arms
+  ctx.beginPath(); ctx.moveTo(-s * 0.17, s * 0.03); ctx.lineTo(-s * 0.27, s * 0.17 - step * s * 0.06); ctx.moveTo(s * 0.17, s * 0.03); ctx.lineTo(s * 0.27, s * 0.17 + step * s * 0.06); ctx.stroke();
+  // shirt (golf polo)
+  rr(ctx, -s * 0.18, -s * 0.02, s * 0.36, s * 0.25, s * 0.07); ctx.fillStyle = BLUE; ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-s * 0.06, -s * 0.02); ctx.lineTo(0, s * 0.06); ctx.lineTo(s * 0.06, -s * 0.02); ctx.fillStyle = PAPER; ctx.fill(); ctx.stroke();
+  // head
+  const hy = -s * 0.22, hr = s * 0.2;
+  ctx.beginPath(); ctx.arc(0, hy, hr, 0, Math.PI * 2); ctx.fillStyle = "#f7d3b5"; ctx.fill(); ctx.stroke();
+  // hair
+  ctx.beginPath();
+  ctx.moveTo(-hr * 1.02, hy - hr * 0.05);
+  ctx.quadraticCurveTo(-hr * 1.05, hy - hr * 1.15, 0, hy - hr * 1.12);
+  ctx.quadraticCurveTo(hr * 1.1, hy - hr * 1.1, hr * 1.02, hy - hr * 0.1);
+  ctx.lineTo(hr * 0.55, hy - hr * 0.45); ctx.lineTo(hr * 0.25, hy - hr * 0.3); ctx.lineTo(-hr * 0.05, hy - hr * 0.5); ctx.lineTo(-hr * 0.4, hy - hr * 0.35); ctx.lineTo(-hr * 0.7, hy - hr * 0.5);
+  ctx.closePath(); ctx.fillStyle = INK; ctx.fill(); ctx.stroke();
+  // face (looks where it walks)
+  const lx = face === "left" ? -hr * 0.2 : face === "right" ? hr * 0.2 : 0;
+  const ly = face === "up" ? -hr * 0.12 : face === "down" ? hr * 0.08 : 0;
+  ctx.fillStyle = INK;
+  if (face !== "up") {
+    ctx.beginPath(); ctx.arc(-hr * 0.35 + lx, hy + hr * 0.05 + ly, hr * 0.1, 0, Math.PI * 2); ctx.arc(hr * 0.35 + lx, hy + hr * 0.05 + ly, hr * 0.1, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "rgba(229,64,47,.3)"; ctx.beginPath(); ctx.arc(-hr * 0.6 + lx, hy + hr * 0.35, hr * 0.13, 0, Math.PI * 2); ctx.arc(hr * 0.6 + lx, hy + hr * 0.35, hr * 0.13, 0, Math.PI * 2); ctx.fill();
+    ctx.lineWidth = Math.max(1.2, s * 0.04); ctx.beginPath(); ctx.arc(lx, hy + hr * 0.3 + ly, hr * 0.28, 0.15 * Math.PI, 0.85 * Math.PI); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawFlag(ctx, x, y, s, t, remaining) {
+  ctx.save(); ctx.translate(x, y); ctx.strokeStyle = INK; ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.lineWidth = Math.max(1.4, s * 0.05);
+  ctx.beginPath(); ctx.ellipse(0, s * 0.36, s * 0.26, s * 0.07, 0, 0, Math.PI * 2); ctx.fillStyle = INK; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-s * 0.08, s * 0.36); ctx.lineTo(-s * 0.08, -s * 0.42); ctx.stroke();
+  const wv = reduceMotion ? 0 : Math.sin(t * 4) * s * 0.04;
+  ctx.beginPath(); ctx.moveTo(-s * 0.08, -s * 0.42); ctx.quadraticCurveTo(s * 0.15, -s * 0.38 + wv, s * 0.38, -s * 0.28 + wv); ctx.quadraticCurveTo(s * 0.15, -s * 0.18 - wv, -s * 0.08, -s * 0.12); ctx.closePath();
+  ctx.fillStyle = remaining ? PAPER : RED; ctx.fill(); ctx.stroke();
+  if (remaining) { ctx.fillStyle = INK; ctx.font = `800 ${Math.round(s * 0.22)}px Sniglet, sans-serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(String(remaining), s * 0.1, -s * 0.27); }
+  ctx.restore();
+}
+
+/* ---------------- canvas setup ---------------- */
+const canvas = document.getElementById("maze");
+const ctx = canvas.getContext("2d");
+const wrap = document.getElementById("wrap");
+const staticLayer = document.createElement("canvas");
+let cell = 40, padX = 12, padY = 30, CW = 0, CH = 0, dpr = 1;
+const cxp = (x) => padX + (x + 0.5) * cell;
+const cyp = (y) => padY + (y + 0.5) * cell;
+
+function layout() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+  const avail = Math.max(200, wrap.clientWidth);
+  const byWidth = Math.floor(Math.min(avail, 700) / (COLS + 0.6));
+  const byHeight = Math.floor((window.innerHeight - 24) / (ROWS + 1.7));
+  cell = Math.max(18, Math.min(byWidth, byHeight));
+  padX = Math.round(cell * 0.3); padY = Math.round(cell * 0.85);
+  CW = cell * COLS + padX * 2; CH = cell * ROWS + padY * 2;
+  for (const c of [canvas, staticLayer]) { c.width = Math.round(CW * dpr); c.height = Math.round(CH * dpr); }
+  canvas.style.width = CW + "px"; canvas.style.height = CH + "px";
+  drawStatic();
+}
+
+function drawStatic() {
+  const g = staticLayer.getContext("2d");
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, CW, CH); // transparent, so the paper texture shows through the maze
+  const rnd = mulberry32(7);
+  const j = () => (rnd() - 0.5);
+  g.strokeStyle = INK; g.lineCap = "round"; g.lineJoin = "round";
+  g.lineWidth = Math.max(2.5, cell * 0.11);
+  const seg = (x1, y1, x2, y2) => {
+    const ax = padX + x1 * cell + j() * cell * 0.05, ay = padY + y1 * cell + j() * cell * 0.05;
+    const bx = padX + x2 * cell + j() * cell * 0.05, by = padY + y2 * cell + j() * cell * 0.05;
+    const mx = (ax + bx) / 2 + j() * cell * 0.1, my = (ay + by) / 2 + j() * cell * 0.1;
+    g.beginPath(); g.moveTo(ax, ay); g.quadraticCurveTo(mx, my, bx, by); g.stroke();
+  };
+  for (let y = 0; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
+    const w = walls[idx(x, y)];
+    const isStart = x === START[0] && y === START[1], isEnd = x === FINISH[0] && y === FINISH[1];
+    if (w & N && !isStart) seg(x, y, x + 1, y);
+    if (w & W) seg(x, y, x, y + 1);
+    if (y === ROWS - 1 && (w & S) && !isEnd) seg(x, y + 1, x + 1, y + 1);
+    if (x === COLS - 1 && (w & E)) seg(x + 1, y, x + 1, y + 1);
+  }
+  // Start / Finish labels with hand-drawn arrows
+  g.fillStyle = INK; g.textBaseline = "middle"; g.textAlign = "left";
+  g.font = `400 ${Math.round(cell * 0.42)}px "Gloria Hallelujah", "Comic Sans MS", cursive`;
+  const sx = cxp(START[0]), fx = cxp(FINISH[0]);
+  g.lineWidth = Math.max(2, cell * 0.06);
+  const arrow = (x, y1, y2) => { g.beginPath(); g.moveTo(x, y1); g.lineTo(x, y2); g.moveTo(x - cell * 0.12, y2 - cell * 0.14); g.lineTo(x, y2); g.lineTo(x + cell * 0.12, y2 - cell * 0.14); g.stroke(); };
+  arrow(sx, padY - cell * 0.72, padY - cell * 0.12);
+  g.fillText("Start", sx + cell * 0.25, padY - cell * 0.45);
+  g.textAlign = "right";
+  arrow(fx, CH - padY + cell * 0.12, CH - padY + cell * 0.72);
+  g.fillText("Finish", fx - cell * 0.25, CH - padY + cell * 0.45);
+}
+
+/* ---------------- game state ---------------- */
+const state = {
+  px: START[0], py: START[1], fx: START[0], fy: START[1], prog: 1, face: "down",
+  trail: [[START[0], START[1]]],
+  found: new Set(), paused: false, won: false,
+  held: null, heldStack: [], tapDir: null, runDir: null, runStarted: false, path: [], lastFrom: null, popped: false
+};
+let peekTimer = null, winTimers = [];
+const STEP_MS = 125;
+let particles = [];
+
+function tryMove(dir) {
+  if (!canMove(state.px, state.py, dir)) { if (state.face !== dir || !state.held) announce("Wall"); state.face = dir; return false; }
+  const d = DIRS[dir];
+  state.fx = state.px; state.fy = state.py;
+  state.px += d.dx; state.py += d.dy; state.prog = 0; state.face = dir; state.lastFrom = DIRS[dir].opp;
+  const tr = state.trail;
+  state.popped = tr.length >= 2 && tr[tr.length - 2][0] === state.px && tr[tr.length - 2][1] === state.py;
+  if (state.popped) tr.pop(); else tr.push([state.px, state.py]);
+  return true;
+}
+
+function nextMove() {
+  if (state.paused || state.won) return;
+  if (state.path.length) { const dir = state.path.shift(); if (!tryMove(dir)) state.path = []; return; }
+  if (state.tapDir) { const d = state.tapDir; state.tapDir = null; if (tryMove(d)) return; }
+  if (state.held) { tryMove(state.held); return; }
+  if (state.runDir) {
+    const dir = state.runDir;
+    if (canMove(state.px, state.py, dir)) { tryMove(dir); state.runStarted = true; return; }
+    state.runDir = null;
+  }
+}
+
+function keepKidVisible() {
+  const r = canvas.getBoundingClientRect();
+  const ky = r.top + cyp(state.py), margin = cell * 1.5;
+  let dy = 0;
+  if (ky > innerHeight - margin) dy = ky - (innerHeight - margin);
+  else if (ky < margin) dy = ky - margin;
+  if (dy) window.scrollBy({ top: dy + Math.sign(dy) * cell * 2, behavior: reduceMotion ? "auto" : "smooth" });
+}
+function arrive() {
+  keepKidVisible();
+  const here = ITEMS.find(it => it.x === state.px && it.y === state.py && !state.found.has(it.id));
+  if (here) {
+    state.found.add(here.id);
+    burst(cxp(here.x), cyp(here.y));
+    state.paused = true; state.path = []; state.runDir = null; state.held = null; state.heldStack = []; state.tapDir = null;
+    updateFinder();
+    clearTimeout(peekTimer);
+    peekTimer = setTimeout(() => { peekTimer = null; if (state.found.has(here.id) && !state.won && !full.open) openPeek(here.id, true); else if (!peek.open && !full.open) state.paused = false; }, reduceMotion ? 50 : 380);
+    return;
+  }
+  if (state.px === FINISH[0] && state.py === FINISH[1]) {
+    const left = ITEMS.length - state.found.size;
+    if (left === 0) { win(); return; }
+    say(`Find ${left} more ${left === 1 ? "thing" : "things"} first!`);
+  }
+  if (!state.path.length && !state.held && !state.runDir) announce("Open: " + openings(state.px, state.py).join(", "));
+  // corridor auto-run for swipes: keep going through bends, stop at junctions and dead ends
+  if (state.runDir) {
+    const open = openings(state.px, state.py);
+    if (open.length !== 2) { state.runDir = null; return; }
+    if (!state.runStarted) { if (!canMove(state.px, state.py, state.runDir)) state.runDir = null; return; }
+    if (!canMove(state.px, state.py, state.runDir)) {
+      const back = Object.keys(DIRS).find(k => DIRS[k].bit === state.lastFrom);
+      state.runDir = open.find(k => k !== back) || null;
+    }
+  }
+}
+
+function burst(x, y) {
+  if (reduceMotion) return;
+  const cols = [RED, YEL, BLUE, GREEN];
+  for (let i = 0; i < 14; i++) {
+    const a = (i / 14) * Math.PI * 2 + Math.random() * 0.3, sp = cell * (2.2 + Math.random() * 1.6);
+    particles.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 1, c: cols[i % 4], r: cell * (0.1 + Math.random() * 0.06), rot: Math.random() * 6 });
+  }
+}
+
+/* ---------------- render loop ---------------- */
+let last = performance.now(), clock = 0;
+// opening sequence helpers (clock is seconds since load)
+const INTRO_SKIP = reduceMotion;
+const INTRO_T0 = performance.now();
+// wall-clock based, so the maze is always fully drawn even if animation frames were throttled (background tab)
+const introP = (start, dur) => INTRO_SKIP ? 1 : Math.max(0, Math.min(1, ((performance.now() - INTRO_T0) / 1000 - start) / dur));
+const easeOut = (p) => 1 - Math.pow(1 - p, 3);
+const popIn = (p) => p <= 0 ? 0 : p >= 1 ? 1 : 1 + 2.2 * Math.pow(p - 1, 3) + 1.2 * Math.pow(p - 1, 2);
+function bounceOut(p) { const n = 7.5625, d = 2.75; if (p < 1 / d) return n * p * p; if (p < 2 / d) return n * (p -= 1.5 / d) * p + 0.75; if (p < 2.5 / d) return n * (p -= 2.25 / d) * p + 0.9375; return n * (p -= 2.625 / d) * p + 0.984375; }
+// after the opening finishes, drop the CSS entrance rules so re-renders don't replay them
+setTimeout(() => document.body.classList.add("intro-done"), reduceMotion ? 0 : 2600);
+function frame(now) {
+  const dt = Math.min(50, now - last); last = now; clock += dt / 1000;
+  if (state.prog < 1 && !state.paused) { state.prog = Math.min(1, state.prog + dt / STEP_MS); if (state.prog >= 1) arrive(); }
+  if (state.prog >= 1) nextMove();
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  const ip = introP(0.45, 0.85);
+  if (ip >= 1) { ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.drawImage(staticLayer, 0, 0); }
+  else {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const hh = Math.max(1, Math.round(staticLayer.height * easeOut(ip)));
+    ctx.drawImage(staticLayer, 0, 0, staticLayer.width, hh, 0, 0, staticLayer.width, hh);
+  }
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const e = state.prog < 1 ? (1 - Math.cos(state.prog * Math.PI)) / 2 : 1;
+  const kx = cxp(state.fx + (state.px - state.fx) * e), ky = cyp(state.fy + (state.py - state.fy) * e);
+
+  // crayon trail: the path from Start to where Alfred is now (backtracking erases it)
+  const tr = state.trail;
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  for (const [off, a, wdt] of [[0, 0.55, 0.2], [cell * 0.02, 0.35, 0.12]]) {
+    ctx.strokeStyle = `rgba(229,64,47,${a})`; ctx.lineWidth = cell * wdt;
+    ctx.beginPath(); ctx.moveTo(cxp(START[0]) + off, padY - cell * 0.1 + off);
+    const upto = state.popped && state.prog < 1 ? tr.length : tr.length - 1;
+    for (let i = 0; i < upto; i++) ctx.lineTo(cxp(tr[i][0]) + off, cyp(tr[i][1]) + off);
+    ctx.lineTo(kx + off, ky + off); ctx.stroke();
+  }
+
+  if (introP(1.1, 0.4) > 0) drawFlag(ctx, cxp(FINISH[0]), cyp(FINISH[1]), cell * 0.8, clock, ITEMS.length - state.found.size);
+
+  for (const [n, it] of ITEMS.entries()) {
+    if (state.found.has(it.id)) continue;
+    const pop = popIn(introP(1.05 + n * 0.08, 0.45));
+    if (pop <= 0) continue;
+    ctx.save(); ctx.translate(cxp(it.x), cyp(it.y)); ctx.scale(pop, pop); ctx.translate(-cxp(it.x), -cyp(it.y));
+    const bob = reduceMotion ? 0 : Math.sin(clock * 2.6 + it.x) * cell * 0.05;
+    // little "sticker" disc so items read as things to pick up
+    ctx.fillStyle = "rgba(255,201,60,.32)"; ctx.beginPath(); ctx.arc(cxp(it.x), cyp(it.y), cell * 0.4, 0, Math.PI * 2); ctx.fill();
+    drawItem(ctx, it.type, cxp(it.x), cyp(it.y) + bob, cell * 0.68, clock, true);
+    ctx.restore();
+  }
+
+  const drop = introP(1.6, 0.55);
+  if (drop > 0) {
+    const fall = state.trail.length > 1 ? 0 : (1 - bounceOut(drop)) * cell * 2.2;
+    drawKid(ctx, kx, ky - fall, cell * 0.82, clock, state.prog < 1, state.face);
+  }
+
+  if (particles.length) {
+    const s = dt / 1000;
+    particles = particles.filter(p => (p.life -= s * 1.6) > 0);
+    for (const p of particles) {
+      p.x += p.vx * s; p.y += p.vy * s; p.vx *= 0.92; p.vy = p.vy * 0.92 + cell * 3 * s;
+      ctx.save(); ctx.globalAlpha = Math.max(0, p.life); ctx.translate(p.x, p.y); ctx.rotate(p.rot += s * 4);
+      star(ctx, 0, 0, p.r); ctx.fillStyle = p.c; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = INK; ctx.stroke(); ctx.restore();
+    }
+  }
+
+  if (peek.open && peekId) {
+    const pc = peekIcon.getContext("2d"); pc.setTransform(1, 0, 0, 1, 0, 0); pc.clearRect(0, 0, 192, 192);
+    drawItem(pc, ITEMS.find(i => i.id === peekId).type, 96, 100, 128, clock, true);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------------- UI: checklist, pop-ups, toast ---------------- */
+const $ = (id) => document.getElementById(id);
+const finderList = $("finderList"), peek = $("peek"), full = $("full"), peekIcon = $("peekIcon");
+let peekId = null, returnToMaze = false;
+
+function iconCanvas(type, px, colored) {
+  const c = document.createElement("canvas"); const r = 2;
+  c.width = px * r; c.height = px * r; c.setAttribute("aria-hidden", "true");
+  const g = c.getContext("2d"); g.scale(r, r); drawItem(g, type, px / 2, px / 2 + px * 0.02, px * 0.82, 0.3, colored);
+  return c;
+}
+
+const noun = (t) => t.replace(/^an? /, ""); // "a golf ball" -> "golf ball" in the checklist
+function updateFinder() {
+  finderList.innerHTML = "";
+  for (const it of ITEMS) {
+    const got = state.found.has(it.id);
+    const li = document.createElement("li"); if (got) li.className = "got";
+    const b = document.createElement("button"); b.type = "button"; b.disabled = !got;
+    b.setAttribute("aria-label", got ? `${it.title}: read again` : `${it.thing}, not found yet`);
+    b.appendChild(iconCanvas(it.type, 52, got));
+    const w = document.createElement("span"); w.className = "what";
+    w.innerHTML = got ? `<strong></strong><span></span>` : `<span></span>`;
+    if (got) { w.querySelector("strong").textContent = it.short || it.title; w.querySelector("span").textContent = noun(it.thing); }
+    else w.querySelector("span").textContent = noun(it.thing);
+    const tick = document.createElement("span"); tick.className = "tick"; tick.setAttribute("aria-hidden", "true");
+    b.append(w, tick);
+    b.addEventListener("click", () => openPeek(it.id, false));
+    li.style.setProperty("--i", finderList.children.length); li.appendChild(b); finderList.appendChild(li);
+  }
+  const n = state.found.size;
+  kidWrite($("scoreBox"), `${n}/${ITEMS.length}`);
+  $("scoreBox").classList.toggle("done", n === ITEMS.length);
+}
+
+function openPeek(id, fresh) {
+  returnToMaze = !!fresh;
+  const it = ITEMS.find(i => i.id === id); peekId = id;
+  kidWrite($("peekFound"), fresh ? `You found ${it.thing}!` : `This is ${it.thing}.`);
+  $("peekTitle").textContent = it.title;
+  $("peekSum").textContent = it.summary;
+  const n = state.found.size, left = ITEMS.length - n;
+  $("peekCount").textContent = left ? `${n} of ${ITEMS.length} found. ${left} to go.` : `That's all ${ITEMS.length}! Now head to the flag.`;
+  state.paused = true;
+  if (!peek.open) peek.showModal();
+  $("peekOpen").focus();
+}
+function closeDialogs() { if (peek.open) peek.close(); if (full.open) full.close(); }
+
+function openFull(ids, heading) {
+  const body = $("fullBody"); body.innerHTML = "";
+  $("fullTitle").textContent = heading;
+  for (const id of ids) {
+    const it = ITEMS.find(i => i.id === id);
+    const sec = document.createElement("section"); sec.className = "entry";
+    sec.appendChild(iconCanvas(it.type, 84, true));
+    const col = document.createElement("div"); col.style.minWidth = "0";
+    const h = document.createElement("h3"); h.textContent = it.title; col.appendChild(h);
+    const role = document.createElement("p"); role.className = "role"; role.textContent = it.role; col.appendChild(role);
+    for (const para of it.body) { const p = document.createElement("p"); p.textContent = para; col.appendChild(p); }
+    if (it.highlights && it.highlights.length) { const ul = document.createElement("ul"); for (const x of it.highlights) { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); } col.appendChild(ul); }
+    if (it.email) {
+      const row = document.createElement("div"); row.className = "copyrow";
+      const code = document.createElement("code"); code.textContent = it.email;
+      const cb = document.createElement("button"); cb.type = "button"; cb.className = "btn small"; cb.textContent = "Copy email";
+      cb.addEventListener("click", () => {
+        const done = () => { cb.textContent = "Copied"; setTimeout(() => cb.textContent = "Copy email", 1600); };
+        const fallback = () => { const r = document.createRange(); r.selectNodeContents(code); const s = getSelection(); s.removeAllRanges(); s.addRange(r); cb.textContent = "Selected, press copy"; setTimeout(() => cb.textContent = "Copy email", 2400); };
+        try { navigator.clipboard.writeText(it.email).then(done, fallback); } catch (e) { fallback(); }
+      });
+      row.append(code, cb); col.appendChild(row);
+    }
+    if (it.links && it.links.length) {
+      const row = document.createElement("div"); row.className = "linkrow";
+      for (const l of it.links.filter(l => l.href)) { const a = document.createElement("a"); a.className = "btn small"; a.href = l.href; a.target = "_blank"; a.rel = "noopener"; a.textContent = l.label; row.appendChild(a); }
+      col.appendChild(row);
+    }
+    sec.appendChild(col); body.appendChild(sec);
+  }
+  state.paused = true;
+  if (!full.open) full.showModal();
+  $("fullInner").scrollTop = 0;
+  $("fullClose").focus();
+}
+
+function afterClose() { if (!peek.open && !full.open && state.paused) resume(); }
+function closeD(d) { if (d.open) d.close(); afterClose(); }
+peek.addEventListener("close", afterClose);
+full.addEventListener("close", afterClose);
+function resume() { state.paused = false; state.tapDir = null; state.held = null; state.heldStack = []; if (returnToMaze && !state.won) canvas.focus({ preventScroll: true }); returnToMaze = false; }
+$("peekClose").addEventListener("click", () => closeD(peek));
+$("peekOpen").addEventListener("click", () => { const id = peekId; peek.close(); openFull([id], "From the maze"); });
+$("fullClose").addEventListener("click", () => closeD(full));
+$("skipTop").addEventListener("click", () => openFull(ITEMS.map(i => i.id), "Everything in the maze"));
+$("skipBtn").addEventListener("click", () => openFull(ITEMS.map(i => i.id), "Everything in the maze"));
+$("winAll").addEventListener("click", () => openFull(ITEMS.map(i => i.id), "Everything in the maze"));
+$("winAgain").addEventListener("click", reset);
+$("resetBtn").addEventListener("click", reset);
+for (const d of [peek, full]) d.addEventListener("click", (e) => { if (e.target === d) closeD(d); }); // click backdrop to close
+
+let toastTimer = null;
+const CRAYONS = ["#e5402f", "#ff8a1f", "#f5b800", "#3fae4a", "#3a86ff", "#9b5de5", "#ff5fa2"];
+const jitter = (amt) => (Math.random() * 2 - 1) * amt;
+// write text like a kid: each letter tilted and bumped a little; crayon = cycle colours
+function kidWrite(el, text, crayon) {
+  el.textContent = "";
+  el.classList.toggle("crayon", !!crayon);
+  if (crayon) el.setAttribute("aria-label", text); else el.removeAttribute("aria-label");
+  let ci = Math.floor(Math.random() * CRAYONS.length);
+  let word = null; // letters are grouped per word so lines only break between words
+  for (const ch of String(text)) {
+    if (ch !== " " && !word) { word = document.createElement("span"); word.className = "word"; el.appendChild(word); }
+    if (ch === " ") word = null;
+    const sp = document.createElement("span");
+    sp.className = ch === " " ? "kid sp" : "kid";
+    sp.textContent = ch === " " ? "\u00a0" : ch;
+    sp.style.setProperty("--r", jitter(9).toFixed(1) + "deg");
+    sp.style.setProperty("--y", jitter(2.5).toFixed(1) + "px");
+    sp.style.setProperty("--s", (1 + jitter(0.12)).toFixed(2) + "em");
+    if (crayon && ch !== " ") { let c = CRAYONS[ci++ % CRAYONS.length]; if (c === "#f5b800") c = CRAYONS[ci++ % CRAYONS.length]; sp.style.setProperty("--c", c); } // skip yellow: too faint on white
+    if (crayon) sp.setAttribute("aria-hidden", "true");
+    (word || el).appendChild(sp);
+  }
+}
+function bubbleTitle(el) {
+  const text = el.getAttribute("aria-label") || el.textContent;
+  el.textContent = "";
+  let ci = 0, i = 0;
+  let word = null;
+  for (const ch of text) {
+    const sp = document.createElement("span");
+    sp.setAttribute("aria-hidden", "true");
+    if (ch === " ") { word = null; sp.className = "ltr sp"; sp.textContent = " "; el.appendChild(sp); i++; continue; }
+    if (!word) { word = document.createElement("span"); word.className = "word"; el.appendChild(word); }
+    {
+      sp.className = "ltr"; sp.textContent = ch;
+      sp.style.setProperty("--c", ch === "'" ? INK : CRAYONS[ci++ % CRAYONS.length]);
+      sp.style.setProperty("--r", (jitter(7) || 3).toFixed(1) + "deg");
+      sp.style.setProperty("--y", jitter(0.06).toFixed(3) + "em");
+    }
+    sp.style.setProperty("--d", (300 + i++ * 55) + "ms");
+    word.appendChild(sp);
+  }
+}
+function announce(msg) { const a = document.getElementById("announce"); if (a) a.textContent = msg; }
+function say(msg) { const t = $("toast"); kidWrite(t, msg); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.textContent = "", 2600); }
+
+function fitWin() {
+  const w = $("win"); if (w.hidden) return;
+  w.classList.remove("below"); wrap.classList.remove("stack");
+  if (getComputedStyle(w).position !== "absolute") return;
+  const card = w.querySelector(".card");
+  if (card.offsetHeight > canvas.offsetHeight - 16) { w.classList.add("below"); wrap.classList.add("stack"); }
+}
+function win() {
+  if (state.found.size < ITEMS.length) return; // the flag only counts once all 7 are picked up
+  state.won = true; state.path = []; state.runDir = null; state.held = null; state.heldStack = [];
+  $("win").hidden = false; fitWin(); 
+  const st = $("stamp"); st.hidden = false; st.classList.remove("pop"); void st.offsetWidth; st.classList.add("pop");
+  winTimers = [0, 1, 2].map(i => setTimeout(() => burst(cxp(FINISH[0]), cyp(FINISH[1])), i * 180));
+  $("winAll").focus();
+}
+
+function reset() {
+  $("win").classList.remove("below"); wrap.classList.remove("stack");
+  clearTimeout(peekTimer); peekTimer = null; winTimers.forEach(clearTimeout); winTimers = [];
+  closeDialogs();
+  Object.assign(state, { px: START[0], py: START[1], fx: START[0], fy: START[1], prog: 1, face: "down", trail: [[START[0], START[1]]], found: new Set(), paused: false, won: false, held: null, heldStack: [], tapDir: null, runDir: null, runStarted: false, path: [], popped: false });
+  $("win").hidden = true; $("stamp").hidden = true; particles = [];
+  updateFinder(); say(""); canvas.focus({ preventScroll: true });
+}
+
+/* ---------------- input ---------------- */
+const KEYMAP = { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right", w: "up", s: "down", a: "left", d: "right", W: "up", S: "down", A: "left", D: "right" };
+window.addEventListener("keydown", (e) => {
+  if (peek.open || full.open || state.won || state.paused) return;
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  const t = e.target; if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+  const dir = KEYMAP[e.key];
+  if (!dir) return;
+  // arrows / WASD always steer, wherever focus is (no need to click the maze first)
+  e.preventDefault();
+  state.path = []; state.runDir = null;
+  if (!e.repeat) state.tapDir = dir;
+  holdDir(dir);
+});
+function holdDir(dir) { state.heldStack = state.heldStack.filter(d => d !== dir); state.heldStack.push(dir); state.held = dir; }
+function releaseDir(dir) { state.heldStack = state.heldStack.filter(d => d !== dir); state.held = state.heldStack[state.heldStack.length - 1] || null; }
+window.addEventListener("keyup", (e) => { const dir = KEYMAP[e.key]; if (dir) releaseDir(dir); });
+window.addEventListener("blur", () => { state.held = null; state.heldStack = []; });
+
+
+// canvas: tap a cell to walk there, or swipe to run down a corridor
+let down = null;
+canvas.addEventListener("pointerdown", (e) => { if (e.button !== 0) return; down = { x: e.clientX, y: e.clientY }; canvas.focus({ preventScroll: true }); });
+canvas.addEventListener("pointercancel", () => { down = null; });
+canvas.addEventListener("pointerup", (e) => {
+  if (!down || state.paused || state.won) { down = null; return; }
+  const dx = e.clientX - down.x, dy = e.clientY - down.y; down = null;
+  if (Math.hypot(dx, dy) > 24) {
+    state.path = []; state.held = null; state.runStarted = false;
+    state.runDir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up");
+    return;
+  }
+  const r = canvas.getBoundingClientRect();
+  const gx = Math.floor((e.clientX - r.left - padX) / cell), gy = Math.floor((e.clientY - r.top - padY) / cell);
+  if (gx < 0 || gy < 0 || gx >= COLS || gy >= ROWS) return;
+  walkTo(gx, gy);
+});
+function walkTo(gx, gy) {
+  const { prev } = bfs([state.px, state.py]);
+  const steps = []; let cur = [gx, gy];
+  while (!(cur[0] === state.px && cur[1] === state.py)) {
+    const p = prev[idx(cur[0], cur[1])]; if (!p) return;
+    steps.unshift(p[2]); cur = [p[0], p[1]];
+  }
+  state.runDir = null; state.held = null; state.path = steps;
+}
+
+/* ---------------- boot ---------------- */
+kidWrite($("dateLine"), new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }));
+kidWrite($("nameLine"), ME.name, true);
+bubbleTitle($("title"));
+// grab keyboard focus right away so arrow keys work the moment the page opens
+try { window.focus(); canvas.focus({ preventScroll: true }); } catch (e) {}
+
+function start(data) {
+  if (data && Array.isArray(data.found)) {
+    data.found.forEach(id => ITEMS.some(i => i.id === id) && state.found.add(id));
+    const inGrid = (x, y) => Number.isInteger(x) && Number.isInteger(y) && x >= 0 && y >= 0 && x < COLS && y < ROWS;
+    const tr = data.trail;
+    const ok = inGrid(data.px, data.py) && Array.isArray(tr) && tr.length > 0 &&
+      tr.every((p, i) => Array.isArray(p) && inGrid(p[0], p[1]) && (i === 0 || Math.abs(p[0] - tr[i - 1][0]) + Math.abs(p[1] - tr[i - 1][1]) === 1)) &&
+      tr[0][0] === START[0] && tr[0][1] === START[1] && tr[tr.length - 1][0] === data.px && tr[tr.length - 1][1] === data.py;
+    if (ok) { state.px = state.fx = data.px; state.py = state.fy = data.py; state.trail = tr.map(p => [p[0], p[1]]); }
+    if (data.won && state.found.size === ITEMS.length) { state.won = true; $("win").hidden = false; $("stamp").hidden = false; requestAnimationFrame(fitWin);  }
+  }
+  layout(); updateFinder();
+  let lastW = wrap.clientWidth, lastDpr = devicePixelRatio, lastH = innerHeight;
+  // ignore small height changes (mobile address bar showing/hiding) so the maze doesn't jump
+  const relayout = () => {
+    if (wrap.clientWidth === lastW && devicePixelRatio === lastDpr && Math.abs(innerHeight - lastH) < 120) return;
+    lastW = wrap.clientWidth; lastDpr = devicePixelRatio; lastH = innerHeight;
+    const before = cell; layout(); if (before !== cell) particles = [];
+    fitWin();
+  };
+  new ResizeObserver(relayout).observe(wrap);
+  window.addEventListener("resize", relayout);
+  requestAnimationFrame((t) => { last = t; frame(t); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawStatic);
+}
+window.claude?.hot?.snapshot?.(() => ({ found: [...state.found], px: state.px, py: state.py, trail: state.trail.map(p => [p[0], p[1]]), won: state.won }));
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+</body>
+</html>
